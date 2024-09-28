@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Views\JobList\" />
     <Folder Include="Views\LandingPage\" />
     <Folder Include="Views\ForgetPassword\" />
-    <Folder Include="Views\JobList\" />
     <Folder Include="Views\ManageJob\" />
     <Folder Include="Views\AppliedJob\" />
     <Folder Include="Views\Profile\" />
