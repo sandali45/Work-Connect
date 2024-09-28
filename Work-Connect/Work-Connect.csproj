@@ -7,16 +7,4 @@
     <RootNamespace>Work_Connect</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\JobList\" />
-    <Folder Include="Views\LandingPage\" />
-    <Folder Include="Views\ForgetPassword\" />
-    <Folder Include="Views\ManageJob\" />
-    <Folder Include="Views\AppliedJob\" />
-    <Folder Include="Views\Profile\" />
-    <Folder Include="Views\PostAJob\" />
-    <Folder Include="Views\SignIn\" />
-    <Folder Include="Views\SignUp\" />
-  </ItemGroup>
-
 </Project>
