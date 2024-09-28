@@ -13,6 +13,7 @@
     <Folder Include="Views\ForgetPassword\" />
     <Folder Include="Views\ManageJob\" />
     <Folder Include="Views\AppliedJob\" />
+    <Folder Include="Views\JOB\" />
     <Folder Include="Views\Profile\" />
     <Folder Include="Views\PostAJob\" />
     <Folder Include="Views\SignIn\" />
