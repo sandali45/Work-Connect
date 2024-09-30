@@ -17,7 +17,7 @@ namespace Work_Connect.Controllers
         {
             return View();
         }
-        public IActionResult Landing()
+        public IActionResult Landinghtml()
         {
             return View();
         }
