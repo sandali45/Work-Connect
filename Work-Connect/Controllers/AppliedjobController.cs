@@ -2,9 +2,9 @@
 
 namespace Work_Connect.Controllers
 {
-    public class ManageController : Controller
+    public class AppliedjobController : Controller
     {
-        public IActionResult Managehtml()
+        public IActionResult Appliedjobhtml()
         {
             return View();
         }
