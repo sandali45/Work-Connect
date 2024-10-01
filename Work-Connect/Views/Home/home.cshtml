@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "home";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Connect</title>
+    <link rel="stylesheet" href="~/css/homecss.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="~/images/logo.svg" alt="Logo" class="logo">
+                <div class="logo-text">work | connect</div>
+            </div>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="home">About Us</a></li>
+                <li><a href="contact">Contact Us</a></li>
+            </ul>
+            <form action="/Jobs/Search" method="GET">
+                <input type="text" name="searchQuery" placeholder="Search by skill">    
+                <button type="submit">Search</button>
+            </form>
+                <img src="~/images/undraw_Pic_profile_re_7g2h-removebg-preview 1.svg" alt="User Icon" class="user-icon">
+            
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Post Jobs in a Snap!</h1>
+        <p>Connect with top talent in minutes, create a listing effortlessly and watch your team grow.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Your Account</h3>
+                <img src="~/images/undraw_apps_notification_ovut 1.svg" alt="Step 1 Image" class="step-image">
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Craft Your Job Listing</h3>
+                <img src="~/images/undraw_creative_draft_vb5x 1.svg" alt="Step 2 Image" class="step-image">
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Publish and Attract Talent</h3>
+                <img src="~/images/undraw_completing_re_i7ap 1.svg" alt="Step 3 Image" class="step-image">
+            </div>
+        </div>
+        <a href="#" class="post-job-btn">Post a job now</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2>About Us</h2>
+        <div class="vision-mission">
+            <div class="vision card">
+                <h3>Vision:</h3>
+                <p>"To empower job seekers and employers through a seamless, scalable, and innovative platform that connects talent with opportunities, fostering growth and success in the ever-evolving job market."</p>
+            </div>
+            <div class="mission card">
+                <h3>Mission:</h3>
+                <p>"To provide a secure and user-friendly platform that connects job seekers with employers. Work | connect focuses on effective job listing management and user authentication, setting the stage for future enhancements like resume management and interview scheduling."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="between-section"></section>
+    <img src="~/images/Rectangle 36.png" alt="Image description">
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-text">
+                <span>work</span> | <span>connect</span>
+            </div>
+            <ul class="footer-nav">
+                <li><a href="home">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="home">About Us</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="contact">Contact Us</a></li>
+            </ul>
+            <div class="footer-image">
+                <img src="~/images/pic.svg" alt="User and Phone Illustration">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

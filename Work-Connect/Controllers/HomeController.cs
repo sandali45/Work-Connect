@@ -21,6 +21,15 @@ namespace Work_Connect.Controllers
         {
             return View();
         }
+        public IActionResult home()
+        {
+            return View(); 
+        }
+        public IActionResult contact()
+        {
+            return View();
+        }
+
 
 
         public IActionResult Privacy()

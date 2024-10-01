@@ -1,0 +1,336 @@
+﻿/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+}
+
+/* Header and Navigation */
+header {
+    background: linear-gradient(135deg, #6A5ACD, #80E9FF);
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+/* Search Button Styles */
+nav form button {
+    background-color: #635BFF; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 4px 9px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+            nav ul li a:hover {
+                color: #6A5ACD;
+            }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+    .search-bar input {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #6A5ACD, #80E9FF);
+    text-align: center;
+    padding: 50px 10%;
+    color: white;
+}
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        margin: 10px 0 30px;
+        font-size: 1.2rem;
+    }
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.step {
+    background-color: rgba(255, 255, 255, 0.7); /* Adjusted transparency */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    flex-basis: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.step-number {
+    background-color: #4C62D6;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    font-size: 1.5rem;
+}
+
+.step-image {
+    width: 60%; /* Reduce the size to 60% of the container */
+    height: auto; /* Keep the aspect ratio */
+    margin: 10px auto; /* Keep the image centered */
+}
+
+.step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #333; /* Adjusted color for better visibility */
+}
+
+.post-job-btn {
+    background-color: #4C62D6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+/* About Us Section */
+.about-us {
+    text-align: center;
+    padding: 50px 10%;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+    .about-us h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: #5A6CB2;
+    }
+
+.vision-mission {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.card {
+    background-color: rgba(234, 240, 249, 0.8); /* Semi-transparent */
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+    margin-bottom: 20px; /* Add margin for spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #a6e7d0;
+}
+
+.vision h3, .mission h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #4C62D6;
+}
+
+.vision p, .mission p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.abstract-bg {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+    .abstract-bg img {
+        width: 100%;
+        height: auto;
+    }
+
+/* Footer Section */
+footer {
+    background-color: #0f1c2d; /* Midnight Blue background */
+    color: #ffffff;
+    padding: 50px 10%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+    .footer-nav li {
+        margin: 10px 0;
+    }
+
+        .footer-nav li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+.footer-image {
+    width: 300px; /* Increase the width */
+    height: auto; /* Keep the aspect ratio */
+}
+
+    .footer-image img {
+        width: 100%;
+        height: auto;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps {
+        flex-direction: column;
+    }
+
+    .step {
+        margin-bottom: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .vision-mission {
+        flex-direction: column;
+        align-items: center; /* Ensure alignment when columns */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .footer-nav li {
+            margin: 10px 20px;
+        }
+
+    .footer-image {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .post-job-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .about-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .vision h3, .mission h3 {
+        font-size: 1.2rem;
+    }
+
+    .vision p, .mission p {
+        font-size: 0.9rem;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+}
