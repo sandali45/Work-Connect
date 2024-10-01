@@ -1,8 +1,118 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Landing";
 }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Connect</title>
+    <link rel="stylesheet" href="~/css/landingcss.css" asp-append-version="true">
+</head>
+<body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="~/images/logo.svg" alt="Work Connect Logo" class="logo">
+            <h1 class="logo-text">work | connect</h1>
+        </div>
+        <nav>
+            <ul class="nav-items">
+                <li><a href="@Url.Action("home", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Managehtml", "Managejob")">Jobs</a></li>
+                <li><a href="home">About Us</a></li>
+            </ul>
+            <div class="auth-links">
+                <a href="#" class="join-now">Join now</a>
+                <a href="#" class="sign-in">Sign in</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+
+        <!-- Section 1: Intro Banner -->
+        <section class="intro">
+            <!-- Text and Buttons -->
+            <div class="text-and-buttons">
+                <h2>Find your next career move here</h2>
+                <div class="auth-buttons">
+                    <button class="google-login">Continue with Google</button>
+                    <button class="email-login">Sign in with Email</button>
+                </div>
+                <a href="#" class="join-link">New to Work Connect?<span style="color:#0f1c2d;">Join now</span></a>
+            </div>
+            <!-- Illustration -->
+            <div class="illustration">
+                <img src="~/images/WorkIIlustrations.svg" alt="Work Illustration">
+            </div>
+        </section>
+
+    <!-- Section 2 -->
+    <section class="job-categories">
+        <h3>Find the right job or internship for you</h3>
+        <div class="categories">
+            <button>Engineering</button>
+            <button>Business Development</button>
+            <button>Customer Service</button>
+            <button>Marketing</button>
+            <button>Finance</button>
+            <button>Human Resources</button>
+            <button>Retail Associate</button>
+            <button>Operations</button>
+        </div>
+
+        <div class="cta-container">
+            <div class="cta">
+                <h4>Showcase your opportunities to a vast network of potential candidates.</h4>
+                <a href="#">Post a job</a>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <img src="~/images/undraw_connecting_teams_re_hno7 1.png" alt="Networking" class="feature-image">
+                <p class="feature-description">Build valuable connections with industry experts.</p>
+                <div class="feature-buttons">
+                    <button class="outlined-btn">Find people you know</button>
+                </div>
+            </div>
+
+            <div class="feature">
+                <img src="~/images/undraw_online_learning_re_qw08 1.svg" alt="Learning" class="feature-imaged">
+                <p class="feature-description">Gain the expertise needed to thrive in your career.</p>
+                <div class="feature-buttons">
+                    <button class="outlined-btn">Choose a topic to learn</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-image-container">
+            <img src="~/images/Rectangle 36.png" alt="Your Image Description" class="cta-image">
+        </div>
+
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-text">
+                <span>work</span> | <span>connect</span>
+            </div>
+            <ul class="footer-nav">
+                <li><a href="home">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="home">About Us</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="contact">Contact Us</a></li>
+            </ul>
+            <div class="footer-image">
+                <img src="~/images/pic.svg" alt="User and Phone Illustration">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -77,16 +77,25 @@ body, html {
     color: #ffffff; /* Text color */
     border: none; /* Remove default border */
     border-radius: 15px; /* Rounded corners */
-    padding: 15px; /* Padding inside the button */
-    font-size: 16px; /* Font size */
+    padding: 12px 20px; /* Adjusted padding inside the button for better spacing */
+    font-size: 18px; /* Increased font size */
     cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s; /* Smooth background transition */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background and transform transition */
     flex: 1; /* Make buttons take equal space */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box shadow for depth */
+    text-decoration: none; /* Remove link underline */
 }
 
     /* Button hover effect */
     .job-button:hover {
-        background-color: #102842; /* Lighter shade on hover */
+        background-color: #4A47C2; /* Slightly lighter shade on hover */
+        transform: translateY(-3px); /* Adds a lift effect */
+    }
+
+    /* Button active effect */
+    .job-button:active {
+        background-color: #3C3A8E; /* Darker shade when button is clicked */
+        transform: translateY(0); /* Reset the lift effect */
     }
 
 .button-description {
