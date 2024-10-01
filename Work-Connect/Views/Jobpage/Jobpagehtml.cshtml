@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Job page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Navigation</title>
+    <link rel="stylesheet" href="~/css/Jobpage.css">
+   <a asp-controller="JobpageController" asp-action="post" class="nav-link"></a>
+
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <div class="colored-background"></div>
+        <div class="colored-lines-up">
+            <div class="line2 line-one"></div>
+            <div class="line2 line-two"></div>
+        </div>
+        <div class="white-rectangle">
+            <div class="vertical-line">
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="nav-items">
+                <a href="#job-list" class="nav-link">Jobs List</a>
+                <a href="#post-job" class="nav-link">Post A Job</a>
+                <a href="#manage-jobs" class="nav-link">Manage Jobs</a>
+                <a href="#applied-jobs" class="nav-link">Applied Jobs</a>
+            </div>
+            
+
+        </div>
+        <div class="colored-lines">
+            <div class="line22 line-one1"></div>
+            <div class="line22 line-two2"></div>
+        </div>
+    </div>
+
+    <script src="commompage.js"></script>
+
+</body>
+</html>
