@@ -29,8 +29,8 @@ namespace Work_Connect.Controllers
         {
             return View();
         }
-
        
+
 
         public IActionResult Privacy()
         {

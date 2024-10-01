@@ -1,0 +1,197 @@
+﻿/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+.background-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bottom Colored Lines */
+.colored-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+    position: absolute;
+    top: 650px; /* Adjust as needed */
+    left: 0px;
+    width: 60%;
+    z-index: -1;
+}
+
+/* Line styles */
+.line22 {
+    width: 60px;
+    height: 57px;
+    border-radius: 3.2px;
+}
+
+.line-one1 {
+    background-color: rgba(99, 91, 255, 0.5);
+    transform: rotate(-30deg) skew(40deg, 0deg);
+}
+
+.line-two2 {
+    background-color: rgba(128, 233, 255, 0.5);
+    transform: rotate(-30deg) skew(40deg, 0deg);
+    margin-left: 2px;
+}
+
+.left-column {
+    position: absolute; /* Make it position absolute */
+    top: 100px; /* Adjust the top position as needed */
+    left: 20px; /* Adjust the left position as needed */
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 50px; /* Space between buttons */
+    z-index: 1; /* Ensure it's above the background */
+}
+
+/* Buttons Container */
+/* Buttons Container */
+.buttons-container {
+    display: flex;
+    flex-direction: row; /* Arrange buttons in a row */
+    gap: 170px; /* Space between buttons */
+    position: relative; /* Allow 'left' to work */
+    left: 150px; /* Position the container 150px from the left */
+}
+
+/* Job Button Styles */
+.job-button {
+    background-color: #635BFF; /* Primary color for the button */
+    color: #ffffff; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 15px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth background transition */
+    flex: 1; /* Make buttons take equal space */
+}
+
+    /* Button hover effect */
+    .job-button:hover {
+        background-color: #102842; /* Lighter shade on hover */
+    }
+
+.button-description {
+    margin-top: 35px; /* Space above the text */
+    font-size: 42px; /* Font size */
+    color: #102842; /* Text color */
+    text-align: left; /* Align text to the left */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional background color with transparency */
+    padding: 2px; /* Optional padding */
+    border-radius: 2px; /* Optional border radius for rounded corners */
+    position: relative; /* Ensure left positioning works */
+    left: 100px; /* Positioning the element 100px from the left */
+}
+/* Colored Background */
+.colored-background {
+    position: fixed;
+    top: 115px;
+    right: 0px;
+    bottom: 0px;
+    left: 894px;
+    background: linear-gradient(135deg, rgba(128, 233, 255, 0.3), rgba(132, 132, 242, 0.3), rgba(132, 116, 240, 0.3), rgba(120, 107, 245, 0.3), rgba(99, 91, 255, 0.3) );
+    z-index: 0;
+    padding: 20px;
+}
+
+/* White Rectangle */
+.white-rectangle {
+    position: relative;
+    width: 600px;
+    height: 700px;
+    background-color: #fff;
+    margin: 200px 20px 0px 925px;
+    display: flex;
+    flex-direction: column; /* Stack lines above the navigation */
+    z-index: 1;
+}
+
+.vertical-line {
+    display: flex;
+    background: linear-gradient(180deg, rgba(166, 141, 225, 0.8) 0%, rgba(99, 91, 255, 0.7) 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 10px;
+    border-radius: 25px;
+    padding: 20px 10px;
+}
+
+/* Dot and Line styles */
+.dot {
+    width: 15px;
+    height: 15px;
+    background-color: #836AFF;
+    border-radius: 50%;
+}
+
+.line {
+    width: 3px;
+    height: 60px;
+    background-color: #836AFF;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .white-rectangle {
+        width: 90%;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .colored-background {
+        width: 75%;
+        height: 50%;
+        right: 10px;
+        bottom: 20px;
+    }
+
+    .white-rectangle {
+        width: 80%;
+        flex-direction: column;
+    }
+}
+
+/* Responsive adjustments for colored lines */
+.colored-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.line-one1 {
+    width: 66%;
+    height: 35px;
+    background-color: rgba(128, 233, 255, 0.5);
+}
+
+.line-two2 {
+    width: 66%;
+    height: 35px;
+    background-color: rgba(99, 91, 255, 0.5);
+}
