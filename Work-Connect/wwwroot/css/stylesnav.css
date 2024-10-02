@@ -1,0 +1,190 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline */
+}
+
+.profile-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline */
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.work-connect {
+    font-size: 20px;
+    background: linear-gradient(90deg, #635BFF 38%, #A68DE1 71%, #80E9FF 94%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-emphasis-color: transparent;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: #635BFF;
+        font-size: 18px;
+        padding: 10px 15px;
+        position: relative; /* Needed for pseudo-element positioning */
+        z-index: 1; /* Ensure text is on top of the rectangle */
+        transition: color 0.3s ease;
+    }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, #A68DE1 24%, #635BFF 48%, #80E9FF 87%);
+            border-radius: 20px;
+            z-index: -1; /* Place the rectangle behind the text */
+            opacity: 0; /* Start off invisible */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .nav-links a.active::before {
+            opacity: 1; /* Make the rectangle visible */
+        }
+
+        .nav-links a.active {
+            color: white; /* Change text color when active */
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1; /* Show rectangle on hover */
+        }
+
+        .nav-links a:hover {
+            color: white; /* Change text color on hover */
+        }
+
+.search-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(99, 91, 255, 0.2); /* 80% opacity or 20% transparent */
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+    .search-bar input {
+        border: none;
+        outline: none;
+        background: none;
+        color: #635BFF;
+        padding: 5px;
+        font-size: 16px;
+        width: 200px;
+    }
+
+    .search-bar button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #635BFF;
+        font-size: 18px;
+    }
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo, .work-connect, .search-profile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .search-profile {
+        flex-direction: row;
+        justify-content: space-between; /* Space out search bar and profile icon */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: 100%; /* Full width for nav links */
+    }
+
+        .nav-links a {
+            font-size: 16px; /* Adjust font size if needed */
+            padding: 8px 10px;
+        }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo, .work-connect, .search-profile {
+        flex-direction: row;
+        justify-content: space-between; /* Ensure items are evenly spaced */
+        width: 100%;
+    }
+
+    .search-bar {
+        width: calc(100% - 60px); /* Adjust width to fit search bar and button */
+    }
+
+    .profile-icon {
+        display: flex; /* Ensure profile icon is displayed */
+    }
+}
