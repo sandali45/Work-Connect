@@ -1,0 +1,61 @@
+﻿@model workconnect.Models.User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkConnect Sign Up</title>
+    <link rel="stylesheet" href="~/css/signUp.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>workconnect</h1>
+            <div class="features">
+                <div class="feature">
+                    <img src="~/Images/icon.svg" alt="Icon">
+                    <div>
+                        <h3>Get started easily</h3>
+                        <p>Seamlessly integrate with our intuitive platform, designed to help job seekers and employers connect effortlessly.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <img src="~/Images/icon.svg" alt="Icon">
+                    <div>
+                        <h3>Tailored for every profession</h3>
+                        <p>From freelancing to full-time positions across industries, WorkConnect supports diverse work opportunities in a unified environment.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <img src="~/Images/icon.svg" alt="Icon">
+                    <div>
+                        <h3>Tailored for every profession</h3>
+                        <p>Trusted by professionals and businesses of all sizes, WorkConnect empowers you to find or fill roles with ease.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Make the most of your professional life</h2>
+            <form asp-action="SignUp" asp-controller="SignUp" method="post">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Name" required>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Email" required>
+
+                <label for="password">Password (6 characters)</label>
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Password (6 characters)" required>
+                    <span class="show-password">Show</span>
+                </div>
+
+                <button type="submit">Join</button>
+            </form>
+            <p class="signin-text">Already on workconnect? <a href="#">Sign in</a></p>
+        </div>
+    </div>
+    <script src="~/js/signUp.js"></script>
+</body>
+</html>

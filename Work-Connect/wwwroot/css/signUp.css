@@ -1,0 +1,145 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/Images/bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    background-color: #f2e8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+}
+
+.left-section {
+    padding: 40px;
+    background-color: #e1d4f3;
+    width: 50%;
+}
+
+    .left-section h1 {
+        color: #1d1d1d;
+        font-size: 28px;
+        margin-bottom: 30px;
+        font-weight: 800;
+    }
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+    .feature img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .feature h3 {
+        color: #333;
+        font-size: 16px;
+        margin: 0 0 5px 0;
+    }
+
+    .feature p {
+        color: #666;
+        font-size: 14px;
+        margin: 0;
+    }
+
+.right-section {
+    padding: 40px;
+    width: 50%;
+    background-color: #e8e2f6;
+}
+
+    .right-section h2 {
+        color: #1d1d1d;
+        font-size: 24px;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.password-container {
+    position: relative;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #4a7aff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button {
+    background-color: #4a7aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #3a64d1;
+    }
+
+.signin-text {
+    color: #666;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .signin-text a {
+        color: #4a7aff;
+        text-decoration: none;
+    }
+
+        .signin-text a:hover {
+            text-decoration: underline;
+        }
