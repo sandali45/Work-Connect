@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 public class SignInController : Controller
 {
-    private readonly SignupDbContext _context;
+    // Remove or comment out this field if you're not using the database for now
+    // private readonly SignupDbContext _context;
 
-    public SignInController(SignupDbContext context)
-    {
-        _context = context;
-    }
+    // Comment out or remove the constructor if it’s injecting DbContext
+    // public SignInController(SignupDbContext context)
+    // {
+    //     _context = context;
+    // }
 
     // This method handles the GET request to display the sign-in form
     [HttpGet]
@@ -19,20 +18,18 @@ public class SignInController : Controller
         return View();  // This will return the SignIn.cshtml view located in Views/SignIn
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SignIn(string email, string password)
-    {
-        var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
-
-        if (user != null)
-        {
-            // User is authenticated
-            return Ok("Login Successful");
-        }
-        else
-        {
-            // Authentication failed
-            return BadRequest("Invalid Email or Password");
-        }
-    }
+    // You can also comment out the POST method if you don’t need authentication
+    // [HttpPost]
+    // public async Task<IActionResult> SignIn(string email, string password)
+    // {
+    //     // Simulating login without database logic
+    //     if (email == "test@example.com" && password == "password")
+    //     {
+    //         return Ok("Login Successful");
+    //     }
+    //     else
+    //     {
+    //         return BadRequest("Invalid Email or Password");
+    //     }
+    // }
 }
