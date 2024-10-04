@@ -1,0 +1,213 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true">
+    <script src="Profile.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <a asp-controller="ProfileController" asp-action="post" class="nav-link"></a>
+</head>
+<body>
+    <div class="profile-header">
+        <div class="cover-photo">
+            <img id="cover-photo" src="placeholder.jpg">
+            <input type="file" id="cover-photo-input" style="display: none;" accept="image/*" onchange="displayCoverPhoto(this)">
+            <i class="fas fa-camera camera-icon" onclick="document.getElementById('cover-photo-input').click();"></i>
+        </div>
+        <div class="edit-icon" style="position: absolute; top: 230px; right: 20px;  display: block; border: 1px solid #f5f5f5; font-size: 20px; color: #411364">
+            <a href="edit.html">
+                <i class="fas fa-edit"></i>
+            </a>
+        </div>
+        <div class="profile-pic">
+            <img id="profile-picture" src="placeholder.jpg">
+            <input type="file" id="profile-pic-input" accept="image/*" onchange="displayProfilePic(this)">
+            <i class="fas fa-camera profile-camera-icon" onclick="document.getElementById('profile-pic-input').click();"></i>
+        </div>
+        <div class="header-content">
+            <div class="profile-info">
+                <br><br><br><br>
+                <p>Name</p>
+                <p>Degree, University / Current Job Position</p>
+                <p>City, Province, Country</p>
+                <p>Email</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <div id="description-container" class="editable" onclick="editDescription()">
+            <p id="description">Small description about self</p>
+            <input type="text" id="description-input" style="display: none;" />
+            <button id="save-description" type="button" style="display: none;" onclick="saveDescription()">Save</button>
+        </div>
+    </div>
+
+    <script>
+        function editDescription() {
+            var descriptionText = document.getElementById("description").innerText;
+            var inputField = document.getElementById("description-input");
+
+            // Show the input field with the current text and hide the description
+            inputField.style.display = "block";
+            inputField.value = descriptionText;
+            inputField.focus(); // Set focus to input field for better UX
+            document.getElementById("description").style.display = "none";
+            document.getElementById("save-description").style.display = "inline-block";
+
+            console.log("Editing description:", descriptionText); // Log current description
+        }
+
+        // Function to save the description
+        function saveDescription() {
+            console.log("Save button clicked!"); // Debugging line
+            var inputField = document.getElementById("description-input");
+            var newDescription = inputField.value.trim(); // Trim to remove any excess whitespace
+
+            // Only update if the new description is not empty
+            if (newDescription) {
+                document.getElementById("description").innerText = newDescription;
+                console.log("New description set:", newDescription); // Log new description
+            } else {
+                console.log("No new description entered."); // Log if empty
+            }
+
+            // Show updated description and hide input & save button
+            document.getElementById("description").style.display = "block";
+            inputField.style.display = "none";
+            document.getElementById("save-description").style.display = "none";
+        }
+    </script>
+
+
+    <div class="content">
+        <div class="posts-section">
+            <a href="" class="post-button">+Post a job</a>
+            <a href="" class="post-button">Manage job</a>
+            <a href="" class="post-button applied-jobs-button">Applied Jobs</a>
+        </div>
+
+        <div class="experience-section">
+            <p>Experience</p>
+            <p id="experience-placeholder" class="experience-text">Showcase your experience</p>
+            <div style="text-align: center;">
+                <button id="add-experience-button" onclick="openExperienceModal()">+add experience</button>
+
+                <!-- Experience Modal -->
+                <div id="experience-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeExperienceModal()">&times;</span>
+                        <h2>Add Experience</h2>
+                        <form asp-action="Profilehtml" asp-controller="ProfileController" method="post">
+                            <label for="job-title">Job Title:</label>
+                            <input type="text" id="job-title" name="job-title" required>
+
+                            <label for="company-name">Company Name:</label>
+                            <input type="text" id="company-name" name="company-name" required>
+
+                            <label for="start-date">Start Date:</label>
+                            <input type="date" id="start-date" name="start-date" required>
+
+                            <label for="end-date">End Date:</label>
+                            <input type="date" id="end-date" name="end-date">
+
+                            <label for="experience-description">Description:</label>
+                            <textarea id="experience-description" name="experience-description" rows="4" required
+                                      style="background-color: white; color: black; border: 1px solid #ccc; outline: none;"></textarea>
+
+                            <button type="submit" onclick="addExperience()">Add Experience</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- List of Experiences -->
+                <div id="experience-list" class="item-list"></div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="education-section" style="flex: 0 0 20%; margin-left: 20px;">
+                <h2>Education</h2>
+                <button id="add-education-button" onclick="openEducationModal()">+add education</button>
+                <div id="education-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Add Education</h2>
+                        <form asp-action="Profilehtml" asp-controller="ProfileController" method="post">
+                            <label for="degree">Degree:</label>
+                            <input type="text" id="degree" name="degree" required>
+
+                            <label for="institution">Institution:</label>
+                            <input type="text" id="institution" name="institution" required>
+
+                            <label for="start-date-education">Start Date:</label>
+                            <input type="date" id="start-date-education" name="start-date" required>
+
+                            <label for="end-date-education">End Date:</label>
+                            <input type="date" id="end-date-education" name="end-date">
+
+                            <button type="submit">Add Education</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="education-list" class="item-list">
+                    <div class="education-item" id="education-item-1">
+                        <div class="degree">Bachelor of Science</div>
+                        <div class="institution">University of ABC</div>
+                        <div class="start-date">2015</div>
+                        <div class="end-date">2019</div>
+                        <div class="delete-icon">
+                            <i class="fas fa-trash" onclick="deleteEducation(1)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-section" style="flex: 0 0 20%; margin-left: 20px;">
+                <h2>Skills</h2>
+                <button id="add-skills-button" onclick="openSkillsModal()">+ Add Skills</button>
+                <div id="skills-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeSkillsModal()">&times;</span>
+                        <h2>Add Skill</h2>
+                        <form asp-action="Profilehtml" asp-controller="ProfileController" method="post">
+                            <label for="skill-name">Skill Name:</label>
+                            <input type="text" id="skill-name" name="skill-name" required>
+                            <button type="submit">Add Skill</button>
+                        </form>
+                    </div>
+                </div>
+                <ul id="skills-list"></ul>
+            </div>
+
+
+
+            <div class="certifications-section" style="flex: 0 0 20%; margin-right: 20px;">
+                <h2>Certifications</h2>
+                <button id="add-certifications-button" onclick="openCertificationsModal()">+add certifications</button>
+                <div id="certifications-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeCertificationsModal()">&times;</span>
+                        <h2>Add Certifications</h2>
+                        <form asp-action="Profilehtml" asp-controller="ProfileController" method="post">
+                            <label for="certification">Certification:</label>
+                            <input type="text" id="certification" name="certification" required>
+
+                            <label for="issued-by">Issued By:</label>
+                            <input type="text" id="issued-by" name="issued-by" required>
+
+                            <button type="button" onclick="addCertification()">Add Certification</button>
+                        </form>
+                    </div>
+                </div>
+                <ul id="certifications-list"></ul>
+            </div>
+</body>
+</html>
