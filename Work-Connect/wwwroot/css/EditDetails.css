@@ -1,0 +1,153 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #f1effe;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    position: relative;
+}
+
+.edit-form {
+    position: relative;
+}
+
+.back-button a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #4b4c76;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4b4c76;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.label-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.circle {
+    width: 8px;
+    height: 8px;
+    background-color: #7c7abb;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.input-group label {
+    color: #7c7abb;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #7c7abb;
+}
+
+.save-button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #7c7abb;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .save-button:hover {
+        background-color: #281677; /* Slightly lighter or brighter color */
+    }
+
+.label-wrapper label {
+    color: #9573a5; /* Change the color to your desired value */
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #7c7abb;
+}
+
+.back-button {
+    color: #4a46e1; /* Default color */
+    transition: color 0.3s ease;
+}
+
+    .back-button:hover {
+        color: #281677; /* Hover color */
+    }
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding-right: 40px; /* Add extra padding to the right to accommodate the eye icon */
+    }
+
+    .input-group .toggle-password {
+        position: absolute;
+        right: 20px; /* Adjust this value to fine-tune the icon's position */
+        top: 70%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #7c7abb;
+        font-size: 18px; /* Adjust the font size to better fit the input */
+        z-index: 1; /* Ensure the icon is on top of the input field */
+    }
+
+        .input-group .toggle-password i {
+            font-size: 18px; /* Adjust size as needed */
+        }
+
+.back-button {
+    color: #4a46e1; /* Default color */
+    transition: color 0.3s ease;
+}
+
+    .back-button:hover {
+        color: #281677; /* Hover color */
+    }
