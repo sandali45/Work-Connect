@@ -1,0 +1,92 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/Images/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.signin-box {
+    background-color: #f1e8ff;
+    padding: 40px;
+    border-radius: 12px; /* Increased for more curve */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
+    width: 400px;
+}
+
+    .signin-box h2 {
+        font-size: 28px;
+        color: #181616;
+        margin-bottom: 10px;
+        font-weight: bold; /* Make text bold */
+    }
+
+    .signin-box p {
+        color: #343739;
+        margin-bottom: 30px;
+        font-weight: 600; /* Somewhat bold */
+    }
+
+    .signin-box input[type="text"],
+    .signin-box input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px; /* Curved borders */
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+.password-container {
+    position: relative;
+}
+
+    .password-container .show-password {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        cursor: pointer;
+        color: #007bff;
+        font-size: 14px;
+    }
+
+.forgot-password {
+    display: block;
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signin-box button {
+    background-color: #4a7aff; /* Blue background for the button */
+    color: #fff; /* White text */
+    padding: 12px;
+    border: none; /* Remove border */
+    border-radius: 8px; /* Curved borders */
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    .signin-box button:hover {
+        background-color: #2b55e0; /* Slightly darker blue on hover */
+    }

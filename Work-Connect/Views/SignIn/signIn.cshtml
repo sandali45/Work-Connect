@@ -1,0 +1,30 @@
+﻿@using Work_Connect.Models
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="~/css/signIn.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signin-box">
+            <h2>Sign In</h2>
+            <p>Stay updated on your professional world.</p>
+            <form asp-action="SignIn" asp-controller="SignIn" method="post"> 
+                <input type="text" name="email" placeholder="Email or phone" required>
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <span class="show-password" onclick="togglePassword()">Show</span>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/js/signIn.js"></script>
+</body>
+</html>

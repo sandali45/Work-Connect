@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Manage Job page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Navigation</title>
+    <link rel="stylesheet" href="~/css/Managejob.css">
+    <a asp-controller="ManageController" asp-action="post" class="nav-link"></a>
+</head>
+<body>
+    <div class="background-wrapper">
+        <div class="left-column">
+            <div class="buttons-container">
+    <a href="@Url.Action("postedjobhtml", "Postedjob")" class="job-button">Posted Job</a>
+    <a href="@Url.Action("Appliedcandidate", "Apcd")" class="job-button">Applied Candidates</a>
+</div>
+            <div class="button-description">
+                <p>“The future of work is distributed,</p>
+                <p style="text-align: center;">Flexible,</p>
+                <p style="text-align: left;">and Powered by technology."</p>
+            </div>
+        </div>
+        <div class="colored-background"></div>
+        <div class="white-rectangle">
+            <img src="~/images/picmg.png" alt="Description of image" style="width: 100%; height: auto;">
+        </div>
+        <div class="colored-lines">
+            <div class="line22 line-one1"></div>
+            <div class="line22 line-two2"></div>
+        </div>
+    </div>
+
+    <script src="commompage.js"></script>
+</body>
+</html>
