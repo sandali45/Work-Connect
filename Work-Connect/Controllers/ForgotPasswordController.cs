@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class ForgotPasswordController : Controller
 {
@@ -24,4 +25,26 @@ public class ForgotPasswordController : Controller
     // {
     //     return Ok("Password updated successfully.");
     // }
+
+    //[HttpPost]
+    //public async Task<IActionResult> ForgotPassword(string email, string newPassword)
+    //{
+        // Check if the user exists by email
+    //    var user = _context.Users.FirstOrDefault(u => u.Email == email);
+    //   if (user == null)
+    //   {
+    //       TempData["ErrorMessage"] = "User with this email does not exist.";
+    //       return RedirectToAction("ForgotPassword");
+    //  }
+
+        // Update the user's password
+    //    user.Password = newPassword;
+    //    _context.Users.Update(user);
+    //    await _context.SaveChangesAsync();  // Save the new password in the database
+
+        // Set the success message
+    //    TempData["SuccessMessage"] = "Password updated successfully.";
+    //   return RedirectToAction("ForgotPassword");
+    //}
+
 }
