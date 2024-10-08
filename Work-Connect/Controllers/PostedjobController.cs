@@ -8,9 +8,13 @@ namespace Work_Connect.Controllers
     public class PostedjobController : Controller
     {
 
-        private readonly ApplicationDbContext _context; // Make sure to create this context
+        public IActionResult postedjobhtml()
+        {
 
-        
+            return View();
+        }
+
+
 
     }
 

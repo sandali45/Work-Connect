@@ -199,6 +199,7 @@ body, html {
     font-size: 15px; /* Increase font size for better visibility */
     width: 250px; /* Make the button take the full width of the container */
     max-width: 300px; /* Optional: set a max width */
+    cursor: pointer;
 }
 
 .action-button1:hover {
@@ -208,6 +209,63 @@ body, html {
 .action-button11:hover {
     background-color: rgba(99, 91, 255, 0.1);
 }
+
+.chat-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    bottom: 0; /* Stick to the bottom */
+    right: 15px; /* Position it 15px from the right */
+    border: 3px solid #A68DE1; /* Optional border */
+    z-index: 9; /* Sit on top */
+    background-color: white; /* Background color */
+    max-width: 300px; /* Max width of the popup */
+    padding: 20px; /* Some padding inside the popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    border-radius: 25px; /* Rounded corners */
+}
+
+    /* Style for the input fields */
+    .chat-popup input[type="email"],
+    .chat-popup input[type="text"],
+    .chat-popup input[type="datetime-local"],
+    .chat-popup textarea {
+        width: 100%; /* Full width */
+        padding: 10px; /* Some padding */
+        margin: 10px 0 15px 0; /* Spacing around */
+        border: 1px solid #A68DE1; /* Light border */
+        border-radius: 5px; /* Rounded corners */
+        box-sizing: border-box; /* Make sure padding and width stay consistent */
+        font-size: 16px; /* Larger text */
+    }
+
+    /* Style for the textarea */
+    .chat-popup textarea {
+        height: 100px; /* Set a height */
+        resize: none; /* Disable resize */
+    }
+
+    /* Style for the buttons */
+    .chat-popup .btn {
+        background-color: #A68DE1; /* Green background */
+        color: white; /* White text */
+        padding: 10px 15px; /* Padding */
+        border: none; /* Remove borders */
+        cursor: pointer; /* Pointer cursor on hover */
+        width: 100%; /* Full width */
+        margin-bottom: 10px; /* Some space at the bottom */
+        border-radius: 35px; /* Rounded corners */
+        font-size: 16px; /* Larger text */
+    }
+
+        /* Additional style for the close button */
+        .chat-popup .btn.cancel {
+            background-color: #102842ed; /* Red background for cancel button */
+        }
+
+        /* Change background color of buttons on hover */
+        .chat-popup .btn:hover {
+            opacity: 0.8; /* Slight transparency on hover */
+        }
 
 .right-box2 {
     width: 1400px; /* Set the desired width of the box */
