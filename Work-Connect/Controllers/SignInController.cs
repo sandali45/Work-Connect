@@ -1,35 +1,55 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using Work_Connect.Models;  // Import your User model and context
 
-public class SignInController : Controller
+namespace Work_Connect.Controllers
 {
-    // Remove or comment out this field if you're not using the database for now
-    // private readonly SignupDbContext _context;
-
-    // Comment out or remove the constructor if it’s injecting DbContext
-    // public SignInController(SignupDbContext context)
-    // {
-    //     _context = context;
-    // }
-
-    // This method handles the GET request to display the sign-in form
-    [HttpGet]
-    public IActionResult SignIn()
+    public class SignInController : Controller
     {
-        return View();  // This will return the SignIn.cshtml view located in Views/SignIn
-    }
+        private readonly SignupDbContext _context;
 
-    // You can also comment out the POST method if you don’t need authentication
-    // [HttpPost]
-    // public async Task<IActionResult> SignIn(string email, string password)
-    // {
-    //     // Simulating login without database logic
-    //     if (email == "test@example.com" && password == "password")
-    //     {
-    //         return Ok("Login Successful");
-    //     }
-    //     else
-    //     {
-    //         return BadRequest("Invalid Email or Password");
-    //     }
-    // }
+        public SignInController(SignupDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: SignIn
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+
+        // POST: SignIn
+        [HttpPost]
+        public IActionResult SignIn(string email, string password)
+        {
+            // Check if user is admin by hardcoding admin credentials
+            if (email == "adminuser@gmail.com" && password == "admin1")
+            {
+                // Redirect to the Admin Panel
+                return RedirectToAction("Index", "AdminUsers");
+            }
+
+            // Check if the user exists in the database (non-admin)
+            var user = _context.Users.FirstOrDefault(u => u.Email == email);
+
+            if (user == null)
+            {
+                // User with this email doesn't exist
+                ViewBag.ErrorMessage = "Email not registered. Please sign up.";
+                return View();
+            }
+
+            if (user.Password != password)
+            {
+                // Password is incorrect
+                ViewBag.ErrorMessage = "Invalid Email or Password.";
+                return View();
+            }
+
+            // Regular user is authenticated, redirect to user dashboard or homepage
+            return RedirectToAction("Index", "Home");
+        }
+    }
 }

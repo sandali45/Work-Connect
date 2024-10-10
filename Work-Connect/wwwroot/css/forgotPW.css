@@ -25,7 +25,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-width: 350px;
     width: 100%;
-    text-align: left; /* Align text to the left */
+    text-align: left;
 }
 
 h2 {
@@ -71,10 +71,16 @@ input[type="password"] {
 .show-password {
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #4a7aff;
     cursor: pointer;
     font-size: 14px;
+    padding-left: 5px;
+}
+
+input[type="password"]:focus + .show-password {
+    outline: none;
 }
 
 button {
@@ -93,3 +99,23 @@ button {
     button:hover {
         background-color: #3a64d1;
     }
+
+/*Alert*/
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

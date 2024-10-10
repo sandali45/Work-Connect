@@ -1,27 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
+using Work_Connect.Models;  
+using Work_Connect.Data;
+using Work_Connect.Helpers;
+
 
 public class ForgotPasswordController : Controller
 {
-    // Temporarily remove or comment out the `SignupDbContext` dependency
-    // private readonly SignupDbContext _context;
+    private readonly SignupDbContext _context;
 
-    // Comment out the constructor that injects `SignupDbContext`
-    // public ForgotPasswordController(SignupDbContext context)
-    // {
-    //     _context = context;
-    // }
+    public ForgotPasswordController(SignupDbContext context)
+    {
+        _context = context;
+    }
 
-    // This method handles the GET request to display the ForgotPassword form
+    // GET method for Forgot Password page
     [HttpGet]
     public IActionResult ForgotPassword()
     {
-        return View();  // This will return the ForgotPassword.cshtml view located in Views/ForgotPassword
+        return View();
     }
 
-    // You can comment out the POST method for now if you're just testing the view
-    // [HttpPost]
-    // public async Task<IActionResult> ForgotPassword(string email, string newPassword)
-    // {
-    //     return Ok("Password updated successfully.");
-    // }
+    // POST method for handling password reset
+    [HttpPost]
+    public async Task<IActionResult> ForgotPassword(string email, string newPassword)
+    {
+        // Check if the user exists by email
+        var user = _context.Users.FirstOrDefault(u => u.Email == email);
+
+        if (user == null)
+        {
+            // User with this email does not exist
+            TempData["ErrorMessage"] = "The email you entered is not registered. Please check and try again.";
+            return RedirectToAction("ForgotPassword"); // Reload the form with error
+        }
+
+        // If the user exists, update the password (with hashing)
+        user.Password = PasswordHelper.HashPassword(newPassword);
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        // Set success message
+        TempData["SuccessMessage"] = "Password updated successfully.";
+        return RedirectToAction("ForgotPassword");
+    }
 }

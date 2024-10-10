@@ -90,3 +90,30 @@
     .signin-box button:hover {
         background-color: #2b55e0; /* Slightly darker blue on hover */
     }
+
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.signup-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+    .signup-text a {
+        color: #4a7aff;
+        text-decoration: none;
+    }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }

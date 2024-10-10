@@ -30,20 +30,29 @@
                 <div class="feature">
                     <img src="~/Images/icon.svg" alt="Icon">
                     <div>
-                        <h3>Tailored for every profession</h3>
-                        <p>Trusted by professionals and businesses of all sizes, WorkConnect empowers you to find or fill roles with ease.</p>
+                        <h3>Empower your career</h3>
+                        <p>Whether you're just starting out or advancing in your career, WorkConnect provides the tools you need to succeed in the modern workforce.</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="right-section">
             <h2>Make the most of your professional life</h2>
+
+            <!-- Display error message if exists -->
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                    <div class="error-message">
+                    @ViewBag.ErrorMessage
+                    </div>
+            }
+
             <form asp-action="SignUp" asp-controller="SignUp" method="post">
                 <label for="name">Name</label>
                 <input type="text" name="name" placeholder="Name" required>
 
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
 
                 <label for="password">Password (6 characters)</label>
                 <div class="password-container">
