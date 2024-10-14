@@ -265,13 +265,9 @@ nav {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px; /* Optional: rounded corners */
-    transition: all 0.3s ease; /* Smooth transition on hover */
 }
 
-    .outlined-btn:hover {
-        background-color: #635BFF; /* Background color on hover */
-        color: white; /* Text color on hover */
-    }
+    
 
 /* Centering buttons */
 .feature-buttons {
