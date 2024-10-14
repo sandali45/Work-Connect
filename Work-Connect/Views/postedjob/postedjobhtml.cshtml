@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Work_Connect.Models.postAJob>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,50 +14,26 @@
     <div class="background-wrapper">
             <div class="dot"></div>
             <p class="text-with-dot">Posted  Jobs</p>
-            <div class="vertical-line">
-            </div> 
+          
+
             <div class="right-box-container">
+                @foreach (var job in Model)
+                    {
             <div class="right-box">
                 <div class="image-container">
-                    <img src="job.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;">
+                   
+                    <img src="~/images/job.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;">
                 <div class="text-button-container">
-                    <h3>SoftWare Engineer</h3>
+                            <h3>@job.JobTitle</h3>
                     <br>
-                    <p>Vanos Enterprises</p> <!-- Add your text here -->
+                            <p>@job.CompanyName</p> <!-- Add your text here -->
                     <button class="action-button">Delete</button> <!-- Add your button here -->
-                </div>
+                </div>  
             </div>
          </div>
-         <div class="right-box1">
-
-            <div class="image-container1">
-                <img src="~images/job.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;">
-
-
-            <div class="text-button-container1">
-                <h3>SoftWare Architecture</h3>
-                <br>
-                <p>Space X</p> <!-- Add your text here -->
-                <button class="action-button1">Delete</button> <!-- Add your button here -->
-            </div>
-
-        </div>
+         }
     </div>
-    <div class="right-box2">
-
-        <div class="image-container2">
-            <img src="job.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;">
-
-
-        <div class="text-button-container2">
-            <h3>UX/UI Designer</h3>
-            <br>
-            <p>BIGHIT Enterprises</p> <!-- Add your text here -->
-            <button class="action-button2">Delete</button> <!-- Add your button here -->
-        </div>
-
-    </div>
-</div>
+    
 
             </div>
 

@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Register SignupDbContext with the Azure SQL connection string
-builder.Services.AddDbContext<SignupDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection1")));
 
 var app = builder.Build();
 

@@ -10,5 +10,8 @@ namespace Work_Connect.Data
         }
 
         public DbSet<Job> Jobs { get; set; }
+       
+        public DbSet<postAJob> postAJob { get; set; } 
+
     }
 }
