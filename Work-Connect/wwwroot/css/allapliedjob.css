@@ -1,0 +1,103 @@
+﻿/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* Title Section */
+.background-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Space around title */
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 30px;
+    height: 30px;
+    background-color: #A68DE1;
+    border-radius: 50%; /* Makes it a circle */
+    margin-right: 10px; /* Space between dot and text */
+}
+
+.text-with-dot {
+    font-size: 40px; /* Increase font size for better visibility */
+    color: #102842;
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Right Box Container */
+.right-box-container {
+    display: flex;
+    justify-content: center; /* Center boxes */
+    align-items: center; /* Center items vertically */
+    margin-top: 50px; /* Margin to separate from the title */
+}
+
+.right-box {
+    width: 90%; /* Set the desired width of the box */
+    max-width: 600px; /* Limit the max width */
+    height: 180px; /* Set the desired height of the box */
+    background-color: rgba(166, 141, 225, 0.2);
+    border-radius: 25px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Padding inside the box */
+}
+
+.image-container {
+    display: flex; /* Use flexbox to center the image */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Full width for the image container */
+}
+
+.job-image {
+    max-width: 100px; /* Limit the maximum width of the image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image fits without distortion */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.text-button-container {
+    display: flex;
+    flex-direction: column; /* Stack text and button vertically */
+}
+
+.action-button {
+    margin-top: 15px; /* Space between text and button */
+    padding: 15px 30px; /* Increased button padding for height and width */
+    background-color: #102842; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 10px; /* Rounded corners for button */
+    cursor: pointer; /* Cursor changes on hover */
+    font-size: 15px; /* Increase font size for better visibility */
+}
+
+    .action-button:hover {
+        background-color: rgba(16, 40, 66, 0.8); /* Change color on hover */
+    }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .right-box {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: center; /* Center items */
+    }
+
+    .job-image {
+        max-width: 80px; /* Smaller image for mobile */
+    }
+}
