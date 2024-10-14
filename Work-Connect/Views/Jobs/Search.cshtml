@@ -19,32 +19,52 @@
 
         @if (Model.Any())
         {
-            <table>
-                <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Job Title</th>
-                        <th>Skills</th>
-                        <th>Payment Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var job in Model)
+        <table>
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Job Title</th>
+                    <th>Skills</th>
+                    <th>Payment Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var job in Model)
                     {
-                        <tr>
-                            <td>@job.CompanyName</td>
-                            <td>@job.JobTitle</td>
-                            <td>@job.Skills</td>
-                            <td>@job.PaymentDetails</td>
-                        </tr>
+                <tr>
+                    <td>@job.CompanyName</td>
+                    <td>@job.JobTitle</td>
+                    <td>@job.Skills</td>
+                    <td>@job.PaymentDetails</td>
+                </tr>
                     }
-                </tbody>
-            </table>
+            </tbody>
+        </table>
         }
         else
         {
-            <p>No jobs found matching your criteria.</p>
+        <p>No jobs found matching your criteria.</p>
         }
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="logo-text">
+                <span>work</span> | <span>connect</span>
+            </div>
+            <ul class="footer-nav">
+                <li><a href="home">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="home.cshtml">About Us</a></li>
+                <li><a href="#">Jobs</a></li>
+   
+                <li><a href="contact">Contact Us</a></li>
+            </ul>
+            <div class="footer-image">
+                <img src="~/images/pic.svg" alt="User and Phone Illustration">
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

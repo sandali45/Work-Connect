@@ -47,18 +47,18 @@ nav ul {
     display: flex;
 }
 
-    nav ul li {
+nav ul li {
         margin: 0 15px;
     }
 
-        nav ul li a {
+nav ul li a {
             text-decoration: none;
             color: white;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
-            nav ul li a:hover {
+nav ul li a:hover {
                 color: #6A5ACD;
             }
 
@@ -147,8 +147,8 @@ form {
         font-size: 16px;
     }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+  .form-group input:focus,
+  .form-group textarea:focus {
             border-color: #ff69b4;
             outline: none;
         }
@@ -201,18 +201,18 @@ footer {
     align-items: flex-start;
 }
 
-    .footer-nav li {
+ .footer-nav li {
         margin: 10px 0;
     }
 
-        .footer-nav li a {
+  .footer-nav li a {
             color: #ffffff;
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s ease;
         }
 
-            .footer-nav li a:hover {
+  .footer-nav li a:hover {
                 color: #FFD700; /* Golden hover effect */
             }
 
@@ -221,7 +221,7 @@ footer {
     height: auto; /* Keep the aspect ratio */
 }
 
-    .footer-image img {
+ .footer-image img {
         width: 100%;
         height: auto;
     }

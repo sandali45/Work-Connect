@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Work_Connect.Models;
 
@@ -27,12 +28,11 @@ namespace Work_Connect.Controllers
             return View();
         }
        
-
-
         public IActionResult Privacy()
         {
             return View();
         }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

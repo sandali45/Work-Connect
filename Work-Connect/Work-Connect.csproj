@@ -22,6 +22,8 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\searchcss.css" />
   </ItemGroup>
 
+  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
