@@ -33,9 +33,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Appliedjob\" />
-    <Folder Include="Views\postedjob\" />
-  </ItemGroup>
-
 </Project>

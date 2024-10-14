@@ -2,7 +2,7 @@
 
 namespace Work_Connect.Controllers
 {
-    public class ApcdController : Controller
+    public class AppliedcandidateController : Controller
     {
         public IActionResult Appliedcandidate()
         {
