@@ -1,18 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using Work_Connect.Data; // Adjust the namespace to match your project's structure
-using Work_Connect.Services;
+using Work_Connect.Data;
+using Work_Connect.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register ApplicationDbContext with SQL Server
+// Register SignupDbContext with the Azure SQL connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection")));
-
-// Register JobService
-builder.Services.AddScoped<JobService>();
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection1")));
 
 var app = builder.Build();
 

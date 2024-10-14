@@ -90,8 +90,8 @@
     <div class="content">
         <div class="posts-section">
             <a href="" class="post-button">+Post a job</a>
-            <a href="" class="post-button">Manage job</a>
-            <a href="" class="post-button applied-jobs-button">Applied Jobs</a>
+            <a href="@Url.Action("Managehtml", "Managejob")" class="post-button">Manage job</a>
+            <a href="@Url.Action("Appliedcandidate", "Apcd")" class="post-button applied-jobs-button">Applied Jobs</a>
         </div>
 
         <div class="experience-section">
@@ -159,11 +159,11 @@
                 </div>
                 <div id="education-list" class="item-list">
                     <div class="education-item" id="education-item-1">
-                        <div class="degree">Bachelor of Science</div>
-                        <div class="institution">University of ABC</div>
-                        <div class="start-date">2015</div>
-                        <div class="end-date">2019</div>
-                        <div class="delete-icon">
+                        <div class="degree"></div>
+                        <div class="institution"></div>
+                        <div class="start-date"></div>
+                        <div class="end-date"></div>
+                        <!--<div class="delete-icon"> -->
                             <i class="fas fa-trash" onclick="deleteEducation(1)"></i>
                         </div>
                     </div>

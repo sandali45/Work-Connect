@@ -8,67 +8,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Navigation</title>
     <link rel="stylesheet" href="~/css/Appliedcandidate.css">
-    <a asp-controller="ApcdController" asp-action="post" class="nav-link"></a>
+    <style>
+        /* Style for the popup chat window */
+
+    </style>
 
 </head>
 <body>
 
     <div class="background-wrapper">
 
-            <div class="dot"></div>
-            <p class="text-with-dot">Applied Candidate</p>
-            <div class="vertical-line">
-            </div> 
-
-            <div class="right-box-container">
+        <div class="dot"></div>
+        <p class="text-with-dot">Applied Candidate</p>
+        <div class="vertical-line">
+        </div>
+        <div class="right-box-container">
             <div class="right-box">
+
                 <div class="image-container">
                     <a href="#"><img src="~/images/pfpic.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;"></a>
-                <div class="text-button-container">
-                    <h3>Sua johathon</h3>
-                    <div class="button-container">
-                        <button class="action-button1">Remove</button>
-                        <button class="action-button11">schedule  a Interview</button> <!-- New button added here -->
+                    <div class="text-button-container">
+                        <h3>Sua johathon</h3>
+                        <div class="button-container">
+                            <button class="action-button1">Remove</button>
+                            <button class="action-button11" onclick="openForm()">schedule  a Interview</button> <!-- New button added here -->
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-         </div>
-         <div class="right-box1">
+            <div class="chat-popup" id="myForm">
+                <!-- Subject Field -->
+                <label for="Add Subject"><b>Subject</b></label>
+                <input type="text" placeholder="Enter subject..." name="subject" required>
+                <br>
+                <!-- Email Address Field -->
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" placeholder="" name="email" required>
+                <br>
 
-            <div class="image-container1">
-                <a href="#"><img src="~/images/pfpic.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;"></a>
 
+                <!-- Date and Time Field -->
+                <label for="datetime"><b>Select Date and Time</b></label>
+                <input type="datetime-local" name="datetime" required>
+                <br>
+                <!-- Message Text Area -->
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Description" name="msg" required></textarea>
 
-            <div class="text-button-container1">
-                <h3>kai vanos</h3>
-            <div class="button-container">
-                <button class="action-button1">Remove</button>
-                <button class="action-button11">schedule a Interview</button> <!-- New button added here -->
+                <!-- Send and Close Buttons -->
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
             </div>
+            <div class="right-box1">
+
+                <div class="image-container1">
+                    <a href="#"><img src="~/images/pfpic.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;"></a>
+
+
+                    <div class="text-button-container1">
+                        <h3>kai vanos</h3>
+                        <div class="button-container">
+                            <button class="action-button1">Remove</button>
+                            <button class="action-button11" onclick="openForm()">schedule  a Interview</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="chat-popup" id="myForm">
+                <!-- Subject Field -->
+                <label for="Add Subject"><b>Subject</b></label>
+                <input type="text" placeholder="Enter subject..." name="subject" required>
+                <br>
+                <!-- Email Address Field -->
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" placeholder="" name="email" required>
+                <br>
+
+
+                <!-- Date and Time Field -->
+                <label for="datetime"><b>Select Date and Time</b></label>
+                <input type="datetime-local" name="datetime" required>
+                <br>
+                <!-- Message Text Area -->
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Description" name="msg" required></textarea>
+
+                <!-- Send and Close Buttons -->
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+            </div>
+            <div class="right-box2">
+
+                <div class="image-container2">
+
+                    <a href="#"><img src="~/images/pfpic.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;"></a>
+
+                    <div class="text-button-container2">
+                        <h3>Choi soobin</h3>
+                        <div class="button-container">
+                            <button class="action-button1">Remove</button>
+                            <button class="action-button11" onclick="openForm()">schedule  a Interview</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="chat-popup" id="myForm">
+                <!-- Subject Field -->
+                <label for="Add Subject"><b>Subject</b></label>
+                <input type="text" placeholder="Enter subject..." name="subject" required>
+                <br>
+                <!-- Email Address Field -->
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" placeholder="" name="email" required>
+                <br>
+
+
+                <!-- Date and Time Field -->
+                <label for="datetime"><b>Select Date and Time</b></label>
+                <input type="datetime-local" name="datetime" required>
+                <br>
+                <!-- Message Text Area -->
+                <label for="msg"><b>Message</b></label>
+<textarea placeholder="Description" name="msg" required></textarea>
+
+                <!-- Send and Close Buttons -->
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
             </div>
 
         </div>
-    </div>
-    <div class="right-box2">
 
-        <div class="image-container2">
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
 
-            <a href="#"><img src="~/images/pfpic.png" alt="Description of the image" style="width: 100%; height: auto; border-radius: 5px;"></a>
-
-        <div class="text-button-container2">
-            <h3>Choi soobin</h3>
-            <div class="button-container">
-                <button class="action-button1">Remove</button>
-                <button class="action-button11">schedule a Interview</button> <!-- New button added here -->
-            </div>
-        </div>
-
-    </div>
-</div>
-
-            </div>
-
-    <script src="commompage.js"></script>
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
 
 </body>
 </html>
+

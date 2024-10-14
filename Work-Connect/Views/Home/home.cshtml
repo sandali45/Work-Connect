@@ -28,7 +28,11 @@
                 <input type="text" name="searchQuery" placeholder="Search by skill">    
                 <button type="submit">Search</button>
             </form>
-                <img src="~/images/undraw_Pic_profile_re_7g2h-removebg-preview 1.svg" alt="User Icon" class="user-icon">
+              
+    <a href="@Url.Action("Profile", "Profile")">
+        <img src="~/images/undraw_Pic_profile_re_7g2h-removebg-preview 1.svg" alt="User Icon" class="user-icon">
+    </a>
+
             
         </nav>
     </header>
@@ -54,7 +58,7 @@
                 <img src="~/images/undraw_completing_re_i7ap 1.svg" alt="Step 3 Image" class="step-image">
             </div>
         </div>
-        <a href="#" class="post-job-btn">Post a job now</a>
+        <a href="@Url.Action("postJob", "PostJob")" class="post-job-btn">Post a job now</a>
     </section>
 
     <!-- About Us Section -->

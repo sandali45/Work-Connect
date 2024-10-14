@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "postJob";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Posting Form</title>
+    <link rel="stylesheet" href="/css/postJob.css">
+</head>
+
+<body>
+    <form class="job-form" action="waitingForApproval">
+        <div class="job-first-row">
+            <div class="job-form-group">
+                <label for="job-title-input" class="job-form-label">Job Title<span>*</span></label>
+                <input type="text" id="job-title-input" name="job-title" class="job-form-input" required>
+            </div>
+
+            <div class="job-form-group">
+                <label for="employment-type-select" class="job-form-label">Company Name<span>*</span></label>
+                <input type="text" id="employment-type-select" name="employment-type" class="job-form-select" placeholder="Full Name" required>
+            </div>
+        </div>
+        <div class="job-form-group">
+            <label for="job-description-textarea" class="job-form-label">Job Description<span>*</span></label>
+            <textarea id="job-description-textarea" name="job-description" class="job-form-textarea" rows="4"
+                      required></textarea>
+        </div>
+
+        <div class="job-form-group">
+            <label class="job-form-label">Salary Range<span>*</span></label>
+            <div class="job-salary-range">
+                <div class="salary-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="min-salary-input" name="min-salary" class="job-form-input-salary"
+                           placeholder="Min" required>
+                </div>
+                <div class="salary-input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="max-salary-input" name="max-salary" class="job-form-input-salary"
+                           placeholder="Max" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-form-category">
+            <div class="job-form-group">
+                <label class="job-form-label">Job Category</label>
+                <div class="job-checkbox-group">
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category"
+                               value="software-development" class="job-form-checkbox"> Software Development
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category" value="marketing"
+                               class="job-form-checkbox"> Marketing
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category" value="business-sales"
+                               class="job-form-checkbox"> Business & Sales
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category"
+                               value="writing-translation" class="job-form-checkbox"> Writing & Translation
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category" value="administration"
+                               class="job-form-checkbox"> Administration
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-category" value="other"
+                               class="job-form-checkbox"> Other
+                    </label>
+                </div>
+            </div>
+
+            <div class="job-form-group">
+                <label class="job-form-label">Job Type</label>
+                <div class="job-checkbox-group">
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-type" value="internship"
+                               class="job-form-checkbox"> Internship
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-type" value="freelancer"
+                               class="job-form-checkbox"> Freelancer
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-type" value="part-time"
+                               class="job-form-checkbox"> Part-time
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-type" value="full-time"
+                               class="job-form-checkbox"> Full-time
+                    </label>
+                    <label class="job-checkbox-label">
+                        <input type="checkbox" name="job-type" value="include-all"
+                               class="job-form-checkbox"> Include All
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-form-actions">
+            <button type="button" class="job-cancel-btn">Cancel</button>
+            <button type="submit" class="job-post-job-btn">Post Job</button>
+        </div>
+    </form>
+</body>
+
+</html>

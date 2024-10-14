@@ -135,11 +135,25 @@ button {
     text-align: center;
 }
 
-    .signin-text a {
-        color: #4a7aff;
-        text-decoration: none;
-    }
+.signin-text a {
+     color: #4a7aff;
+     text-decoration: none;
+}
 
-        .signin-text a:hover {
-            text-decoration: underline;
-        }
+.signin-text a:hover {
+      text-decoration: underline;
+}
+
+.error-message {
+    background-color: #fbeaea; /* Softer red background */
+    color: #a94442; /* Softer dark red text */
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #f2dede;
+    border-radius: 4px;
+    font-size: 14px; /* Slightly smaller font size */
+    font-weight: 500; /* Regular weight text */
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); /* Lighter shadow for more subtle depth */
+    width: 100%; /* Full width of the form or container */
+}
