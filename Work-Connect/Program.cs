@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Work_Connect.Data;
 using Work_Connect.Models;
+using Work_Connect.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection1")));
 
+builder.Services.AddScoped< JobService>(); // Registered my jobservice
+
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

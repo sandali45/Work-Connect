@@ -22,9 +22,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\searchcss.css" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml.css" />
-  </ItemGroup>
+  
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
