@@ -8,9 +8,9 @@ using Work_Connect.Helpers;
 
 public class ForgotPasswordController : Controller
 {
-    private readonly SignupDbContext _context;
+    private readonly ApplicationDbContext _context;
 
-    public ForgotPasswordController(SignupDbContext context)
+    public ForgotPasswordController(ApplicationDbContext context)
     {
         _context = context;
     }

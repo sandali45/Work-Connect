@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Work_Connect.Data;
 using Work_Connect.Models;  // Import your User model and context
 
 namespace Work_Connect.Controllers
 {
     public class SignInController : Controller
     {
-        private readonly SignupDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public SignInController(SignupDbContext context)
+        public SignInController(ApplicationDbContext context)
         {
             _context = context;
         }
