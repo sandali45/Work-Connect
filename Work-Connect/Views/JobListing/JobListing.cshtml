@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Work_Connect.Models.Job>
+﻿@model IEnumerable<Work_Connect.Models.postAJob>
 
 @{
     ViewData["Title"] = "Jobs";
@@ -16,25 +16,25 @@
     <div class="top-section">
         <div class="job-list">
             <div class="square"></div>
-            Job List
+            <h1>Job List</h1>
         </div>
     </div>
 
     <div class="bottom-section">
         <div class="card-container">
-            @foreach (var job in Model) 
+            @foreach (var job in Model)
             {
-                <a href="JobDescriptionPage.html?jobId=@job.JobId" class="card-link">
+                <a href="#" class="card-link">
                     <div class="card">
-                        <img src="@job.ImgURL" alt="Image" class="card-image">
+                        <img src="~/images/job.png" alt="Job Image" class="card-image">
                         <div class="card-content">
                             <div class="card-title">@job.CompanyName</div>
-                            <div class="card-subtitle">@job.Position</div>
-                            <div class="card-description">@job.Description</div>
+                            <div class="card-subtitle">@job.JobTitle</div>
+                            <div class="card-description">@job.JobDescription</div>
                         </div>
                         <div class="card-footer">
-                            <span class="card-button">@job.EmploymentType</span>
-                            <span class="card-button">@job.Salary</span>
+                            <span class="card-button">EmploymentType</span>
+                            <span class="card-button">@job.MaxSalary</span>
                         </div>
                     </div>
                 </a>

@@ -9,11 +9,15 @@
 
 html, body {
     height: 100%;
+    width: 100%;
+    background-color: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     background-image: url('../Resources/Job List Background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,120 +25,182 @@ body {
 }
 
 .top-section {
-    flex: 0 0 2 0%;
-    padding: 20px;
+    width: 100%;
+    padding: 30px;
     background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    border-bottom: 3px solid #ddd;
 }
-
-.bottom-section {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-}
-
 
 .job-list {
-    background-color: rgba(166, 141, 225, 0.4);
-    border-radius: 40px;
-    padding: 10px 20px;
-    width: 90%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin-top: 8%;
-    font-size: 1.5em;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4a4a4a;
 }
 
 .square {
     background-color: #A68DE1;
-    border-radius: 20px;
-    width: 35px;
+    border-radius: 10px;
+    width: 30px;
     height: 30px;
-    margin-right: 10px;
+}
+
+.bottom-section {
+    width: 100%;
+    padding: 50px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
 }
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 2%;
+    gap: 25px;
     justify-content: center;
+    max-width: 1200px;
 }
 
 .card-link {
     text-decoration: none;
+    width: 100%;
+    max-width: 300px;
 }
 
 .card {
-    background-color: rgba(99, 91, 255, 0.12);
-    border-radius: 10px;
-    width: 250px;
-    height: 300px;
-    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    min-height: 350px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease;
 }
 
     .card:hover {
-        transform: scale(1.05);
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     }
 
 .card-image {
-    width: 30%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%;
+    height: 160px;
     object-fit: cover;
-    margin-bottom: -40%;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.card-title, .card-subtitle, .card-description {
-    text-decoration: none;
-    color: black;
+    padding: 10px 0;
 }
 
 .card-title {
     font-weight: 700;
     font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .card-subtitle {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .card-description {
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+    line-height: 1.4;
+    height: 45px;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .card-footer {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .card-button {
     background-color: #635BFF;
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 2% 15%;
-    cursor: default;
-    font-weight: 300;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: 500;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+    .card-button:hover {
+        background-color: #836AFF;
+    }
+
+/* Three cards in one line */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    /* Two cards per row for medium-sized screens */
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* One card per row for small screens */
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .bottom-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        min-height: 250px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-subtitle {
+        font-size: 12px;
+    }
+
+    .card-description {
+        font-size: 10px;
+    }
+
+    .bottom-section {
+        padding: 20px;
+    }
 }
