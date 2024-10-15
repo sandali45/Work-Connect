@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Work_Connect.Models.postAJob>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,18 +14,44 @@
             <p class="text-with-dot">Posted Jobs</p>
         </div>
         <div class="right-box-container">
-            <div class="right-box">
-                <div class="image-container">
+             @foreach (var job in Model)
+            {
+                <div class="right-box">
+                    <div class="image-container">
                     <img src="~/images/job.png" alt="Description of the image" class="job-image">
                 </div>
                 <div class="text-button-container">
-                    <h3>Software Engineer</h3>
-                    <p>Vanos Enterprises</p>
-                    <button class="action-button">Delete</button>
+                        <h3>@job.JobTitle</h3>
+                        <br />
+                        <p>@job.CompanyName</p>
+                        <button class="action-button delete-job">Delete</button>
                 </div>
             </div>
+            }
         </div>
     </div>
+    <script>
+        $(document).on('click', '.delete-job', function () {
+            var jobId = $(this).closest('.right-box').data('id'); // Get job ID from the data attribute
+            if (confirm('Are you sure you want to delete this job?')) { // Confirmation dialog
+                $.ajax({
+                    url: '@Url.Action("Delete", "allpostedjob")', // URL to delete action
+                    type: 'POST',
+                    data: { id: jobId }, // Send job ID
+                    success: function (result) {
+                        if (result.success) {
+                            location.reload(); // Reload the page on success
+                        } else {
+                            alert('Error deleting job.'); // Handle error
+                        }
+                    },
+                    error: function () {
+                        alert('Error deleting job.'); // Handle AJAX error
+                    }
+                });
+            }
+        });
+    </script>
     <script src="commompage.js"></script>
 </body>
 </html>
