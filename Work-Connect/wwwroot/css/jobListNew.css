@@ -1,0 +1,140 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../Resources/Job List Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.top-section {
+    flex: 0 0 2 0%;
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bottom-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+
+.job-list {
+    background-color: rgba(166, 141, 225, 0.4);
+    border-radius: 40px;
+    padding: 10px 20px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 8%;
+    font-size: 1.5em;
+}
+
+.square {
+    background-color: #A68DE1;
+    border-radius: 20px;
+    width: 35px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    justify-content: center;
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+.card {
+    background-color: rgba(99, 91, 255, 0.12);
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+.card-image {
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: -40%;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-title, .card-subtitle, .card-description {
+    text-decoration: none;
+    color: black;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.card-subtitle {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card-description {
+    font-weight: 300;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-button {
+    background-color: #635BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 2% 15%;
+    cursor: default;
+    font-weight: 300;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
