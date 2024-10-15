@@ -21,18 +21,21 @@ namespace Work_Connect.Controllers
             return View(jobPosts);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var jobPost = await _context.postAJob.FindAsync(id); // Find the job post by ID
-            if (jobPost == null)
+            // Find the job by ID
+            var job = await _context.postAJob.FindAsync(id);
+            if (job == null)
             {
                 return NotFound(); // Return 404 if not found
             }
 
-            _context.postAJob.Remove(jobPost); // Remove the job post
+            // Remove the job from the context
+            _context.postAJob.Remove(job);
             await _context.SaveChangesAsync(); // Save changes to the database
 
-            return Json(new { success = true }); // Return success as JSON
+            return RedirectToAction(nameof(allpostedjob)); // Redirect back to the list
         }
     }
-}
+    }
