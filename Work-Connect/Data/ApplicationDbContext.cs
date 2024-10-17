@@ -13,5 +13,6 @@ namespace Work_Connect.Data
         public DbSet<User> Users { get; set; }
         public DbSet<postAJob> postAJob { get; set; }
         public DbSet<VerifiedCompany> VerifiedCompany { get; set; }
+        public DbSet<Admins> Admins { get; set; }
     }
 }
