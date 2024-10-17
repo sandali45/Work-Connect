@@ -2,14 +2,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - User List</title>
     <link rel="stylesheet" href="~/css/adminUsers.css">
 </head>
-
 <body>
     <div class="container">
         <div class="sidebar">
@@ -28,11 +26,11 @@
             <!-- Display success or error messages -->
             @if (TempData["Message"] != null)
             {
-                    <div class="alert alert-success">@TempData["Message"]</div>
+                <div class="alert alert-success">@TempData["Message"]</div>
             }
             @if (TempData["Error"] != null)
             {
-                    <div class="alert alert-danger">@TempData["Error"]</div>
+                <div class="alert alert-danger">@TempData["Error"]</div>
             }
 
             <!-- Table displaying users -->
@@ -49,24 +47,26 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-                            <tr>
-                                <td>@user.Id</td>
-                                <td>@user.Name</td>
-                                <td>@user.Email</td>
-                                <td>@user.Password</td>
-                                <td>
-                                    <form asp-action="Delete" method="post">
-                                        <input type="hidden" name="id" value="@user.Id" />
-                                        <button type="submit" class="delete-btn">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>@user.Password</td>
+                            <td>
+                                <form asp-action="Delete" asp-controller="AdminUsers" method="post">
+                                    @Html.AntiForgeryToken() <!-- Include the anti-forgery token -->
+                                    <input type="hidden" name="id" value="@user.Id" />
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+
+                            </td>
+                        </tr>
                     }
                     @if (!Model.Any())
                     {
-                            <tr>
-                                <td colspan="5" style="text-align: center;">No users found.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="5" style="text-align: center;">No users found.</td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -82,5 +82,4 @@
         </div>
     </div>
 </body>
-
 </html>

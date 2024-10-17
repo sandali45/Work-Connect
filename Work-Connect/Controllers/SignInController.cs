@@ -2,6 +2,7 @@
 using System.Linq;
 using Work_Connect.Data;
 using Work_Connect.Models;  // Import your User model and context
+using Work_Connect.Helpers;
 
 namespace Work_Connect.Controllers
 {
@@ -42,7 +43,8 @@ namespace Work_Connect.Controllers
                 return View();
             }
 
-            if (user.Password != password)
+            // Check if the entered password matches the hashed password in the database
+            if (!PasswordHelper.VerifyPassword(password, user.Password))
             {
                 // Password is incorrect
                 ViewBag.ErrorMessage = "Invalid Email or Password.";
