@@ -1,15 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Work_Connect.Models.Admins>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Simple Login Form</title>
 	<link rel="stylesheet" href="~/css/AdminLogin.css">
 </head>
 <body>
 	<div class="login-container">
 		<h2> Login</h2>
-		<form action="/submit" method="POST">
+		@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+		{
+			<p style="color:red;">@ViewBag.ErrorMessage</p> <!-- Error message if credentials are incorrect -->
+		}
+
+		<form action="/AdminLogin/Login" method="POST">
 			<div class="input-group">
 				<label for="username"> Admin Login</label>
 				<input type="text" id="username" name="username" required>
@@ -19,11 +24,9 @@
 				<input type="password" id="password" name="password" required>
 			</div>
 			
-			<a href='@Url.Action("adminhome", "adminhome")'
-			   class="btn btn-secondary"
-			   style="display:inline-block; background-color:#635BFF; color:white; text-decoration:none; padding:10px 10px 20px; width:270px; height:30px;border-radius:5px;">
+			<button type="submit" class="btn btn-secondary" style="background-color:#635BFF; color:white; padding:10px 10px 20px; width:270px; height:40px; border-radius:5px;">
 				Login
-			</a>
+			</button>
 
 
 		</form>
