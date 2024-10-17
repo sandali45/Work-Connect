@@ -19,6 +19,20 @@ namespace Work_Connect.Controllers
             List<VerifiedCompany> VerifiedCompany = await _context.VerifiedCompany.ToListAsync();
             return View(VerifiedCompany);
         }
+        [HttpGet]
+        public async Task<IActionResult> Search(string query)
+        {
+            var companies = await _context.VerifiedCompany.ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                companies = companies
+                    .Where(c => c.companyName.Contains(query, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            return View("AdminVerifiedcompanie", companies); // Return to the same view with the filtered list
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -110,6 +124,7 @@ namespace Work_Connect.Controllers
             }
             return View(company); // Return the view with the model to show validation errors
         }
+
 
     }
 }

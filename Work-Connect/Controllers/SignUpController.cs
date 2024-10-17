@@ -48,6 +48,6 @@ public class SignUpController : Controller
         await _context.SaveChangesAsync(); // Save changes asynchronously
 
         // Redirect to the home page after a successful signup
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("home", "Home");
     }
 }

@@ -54,8 +54,6 @@
 <body>
     <div class="container">
         <h1>Verified Companies</h1>
-     <br>
-
         <h4>
             <a href="@Url.Action("Add", "AdminVerifiedcompanies")" style="
         display: inline-block;
@@ -71,8 +69,15 @@
                 Add New Company
             </a>
         </h4>
-   
-      
+
+        <!-- Search Form -->
+        <div class="search-container">
+            @using (Html.BeginForm("Search", "AdminVerifiedcompanies", FormMethod.Get))
+            {
+                <input type="text" name="query" class="search-bar" placeholder="Company Name..." />
+                <button type="submit" class="btn edit-btn">Search</button>
+            }
+        </div>
 
         <table>
             <thead>

@@ -52,7 +52,7 @@ namespace Work_Connect.Controllers
             }
 
             // Regular user is authenticated, redirect to user dashboard or homepage
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("home", "Home");
         }
     }
 }
