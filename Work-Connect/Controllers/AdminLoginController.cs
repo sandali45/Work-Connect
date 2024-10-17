@@ -1,57 +1,53 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Work_Connect.Data;
 using Work_Connect.Models;
 
 namespace Work_Connect.Controllers
 {
     public class AdminLoginController : Controller
-
     {
-		// GET: AdminLogin
-		[HttpGet]
-		public IActionResult AdminLogin()
-		{
-			return View();
-		}
-		private readonly ApplicationDbContext _context; // Make sure to create this context
 
-		public AdminLoginController(ApplicationDbContext context)
-		{
-			_context = context;
-		}
+        private readonly ApplicationDbContext _context;
 
-		[HttpPost]
-		public IActionResult Login(Admins model)
-		{
-			if (ModelState.IsValid)
-			{
-				// Check if the username and password exist in the database
-				var admin = _context.Admins
-					.FirstOrDefault(a => a.Username == model.Username && a.Password == model.Password);
+        public AdminLoginController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-				if (admin != null)
-				{
-					// Credentials are valid, redirect to the admin home page
-					return RedirectToAction("adminhome", "adminhome");
-				}
-				else
-				{
-					// Invalid credentials, show error message
-					ViewBag.ErrorMessage = "Invalid Username or Password";
-					return View("AdminLogin", model); // Stay on the login page
-				}
-			}
+        // GET: AdminLogin
+        [HttpGet]
+        public IActionResult AdminLogin()
+        {
+            return View(new Admins());  // Renders the login form
+        }
 
-			return View(model);
-		}
+        // POST: AdminLogin/Login
+        [HttpPost]
+        public IActionResult Login(Admins model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Validate the admin's credentials from the database
+                var admin = _context.Admins
+                    .FirstOrDefault(a => a.Username == model.Username && a.Password == model.Password);
 
-		// GET: Login page
-		[HttpGet]
-		public IActionResult Login()
-		{
-			return View();
-		}
+                if (admin != null)
+                {
+                    // If the credentials are valid, redirect to the admin home page
+                    return RedirectToAction("adminhome", "adminhome");
+                }
+                else
+                {
+                    // If the credentials are invalid, show an error message
+                    ViewBag.ErrorMessage = "Invalid Username or Password";
+                    return View("AdminLogin", model);  // Return to login page with error message
+                }
+            }
 
-	}
+            // If the model state is not valid, return the same view
+            return View("AdminLogin", model);
+        }
+    
+
+        }
 }
