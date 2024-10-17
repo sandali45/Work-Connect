@@ -1,35 +1,40 @@
-﻿@model IEnumerable<Work_Connect.Models.Admins>
+﻿@model Work_Connect.Models.Admins
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="~/css/AdminLogin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/AdminLogin.css">
+    <title>Admin Login</title>
 </head>
+
 <body>
-	<div class="login-container">
-		<h2> Login</h2>
-		@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-		{
-			<p style="color:red;">@ViewBag.ErrorMessage</p> <!-- Error message if credentials are incorrect -->
-		}
+    <div class="login-container">
+        <h2>Login</h2>
 
-		<form action="/AdminLogin/Login" method="POST">
-			<div class="input-group">
-				<label for="username"> Admin Login</label>
-				<input type="text" id="username" name="username" required>
-			</div>
-			<div class="input-group">
-				<label for="password"> Password</label>
-				<input type="password" id="password" name="password" required>
-			</div>
-			
-			<button type="submit" class="btn btn-secondary" style="background-color:#635BFF; color:white; padding:10px 10px 20px; width:270px; height:40px; border-radius:5px;">
-				Login
-			</button>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <p style="color:red;">@ViewBag.ErrorMessage</p> <!-- Error message if credentials are incorrect -->
+        }
 
+        <!-- Corrected the form tag here -->
+        <form action="/AdminLogin/Login" method="post">
+            @Html.AntiForgeryToken()
+            <div class="input-group">
+                <label for="username">Admin Login</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-		</form>
-	</div>
+            <button type="submit" class="btn btn-secondary" style="background-color:#635BFF; color:white; padding:10px 10px 20px; width:270px; height:40px; border-radius:5px;">
+                Login
+            </button>
+        </form>
+    </div>
+
 </body>
 </html>
