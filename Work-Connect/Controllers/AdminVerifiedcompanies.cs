@@ -37,5 +37,7 @@ namespace Work_Connect.Controllers
 
             return RedirectToAction(nameof(AdminVerifiedcompanie)); // Redirect back to the list
         }
+
+
     }
 }

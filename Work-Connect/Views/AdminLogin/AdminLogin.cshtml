@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Simple Login Form</title>
+	<link rel="stylesheet" href="~/css/AdminLogin.css">
+</head>
+<body>
+	<div class="login-container">
+		<h2> Login</h2>
+		<form action="/submit" method="POST">
+			<div class="input-group">
+				<label for="username"> Admin Login</label>
+				<input type="text" id="username" name="username" required>
+			</div>
+			<div class="input-group">
+				<label for="password"> Password</label>
+				<input type="password" id="password" name="password" required>
+			</div>
+			
+			<a href='@Url.Action("adminhome", "adminhome")'
+			   class="btn btn-secondary"
+			   style="display:inline-block; background-color:#635BFF; color:white; text-decoration:none; padding:10px 10px 20px; width:270px; height:30px;border-radius:5px;">
+				Login
+			</a>
+
+
+		</form>
+	</div>
+</body>
+</html>
