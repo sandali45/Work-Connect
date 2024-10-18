@@ -10,17 +10,15 @@
     <title>Edit Details</title>
     <link rel="stylesheet" href="~/css/EditDetails.css" asp-append-version="true">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-       <a asp-controller="EditDetailsController" asp-action="post" class="nav-link"></a>
-
 </head>
 <body>
     <div class="container">
         <div class="edit-form">
             <div class="header">
-                <a href="Profile.html" class="back-button"><i class="fa fa-chevron-left"></i></a>
+                <a href="@Url.Action("Profile", "Profile")" class="back-button"><i class="fa fa-chevron-left"></i></a>
             </div>
-
         </div>
+
         <h2>Edit Details</h2>
         <form asp-action="EditDetailshtml" asp-controller="EditDetailsController" method="post">
             <div class="input-group">
@@ -28,39 +26,37 @@
                     <span class="circle"></span>
                     <label for="name">Name</label>
                 </div>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name" value="@ViewBag.UserName">
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
                     <label for="email">Email</label>
                 </div>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email" value="@ViewBag.Email">
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
-                    <label for="location">Location</label>
+                    <label for="address">Address</label>
                 </div>
-                <input type="text" id="location">
+                <input type="text" id="address" name="address" value="@ViewBag.Address">
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
-                    <label for="job-title">University/Job Title</label>
+                    <label for="job-title">Occupation</label>
                 </div>
-                <input type="text" id="job-title">
+                <input type="text" id="job-title" name="occupation" value="@ViewBag.Occupation">
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
-                    <a href="ChangePassword.html" class="change-password-link">Change Password?</a>
+                    <a href="@Url.Action("ChangePassword", "ChangePassword")" class="change-password-link">Change Password?</a>
                 </div>
             </div>
             <button type="submit" class="save-button">Save</button>
         </form>
     </div>
-    </div>
 </body>
 </html>
-

@@ -51,8 +51,14 @@ namespace Work_Connect.Controllers
                 return View();
             }
 
-            // Regular user is authenticated, redirect to user dashboard or homepage
-            return RedirectToAction("home", "Home");
+            CookieOptions option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(1) // Cookie expiration set for 1 day
+            };
+            Response.Cookies.Append("UserId", user.Id.ToString(), option); // Store the user's Id
+
+            // Redirect to the profile page after successful sign-in
+            return RedirectToAction("Profile", "Profile");
         }
     }
 }
