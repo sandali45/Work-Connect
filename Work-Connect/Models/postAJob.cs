@@ -27,10 +27,10 @@ namespace Work_Connect.Models
         public decimal MaxSalary { get; set; }
 
         [StringLength(255)]
-        public string JobCategory { get; set; } // This could store comma-separated values for multiple categories.
+        public string? JobCategory { get; set; } // This could store comma-separated values for multiple categories.
 
         [StringLength(255)]
-        public string JobType { get; set; } // This could store comma-separated values for multiple job types.
+        public string? JobType { get; set; } // This could store comma-separated values for multiple job types.
 
         public DateTime CreatedAt { get; set; } = DateTime.Now; // Automatically set when the job is created
     }

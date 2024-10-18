@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Work_Connect.Models.WaitingJob>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Waiting Jobs</title>
+    <link rel="stylesheet" href="~/css/adminUsers.css">
+    <style>
+        /* Approve button */
+        .approve-btn {
+            background-color: #28A745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .approve-btn:hover {
+                background-color: #218838;
+            }
+
+        /* Edit button */
+        .edit-btn {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            padding: 10px 33px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .edit-btn:hover {
+                background-color: #f2f2f2;
+            }
+
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .delete-btn:hover {
+                background-color: #ff1a1a;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="~/images/workconnectlogo.png" alt="work | connect logo" class="logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="active">Post a job</a></li>
+                <li><a href="@Url.Action("users", "AdminUsers")">Users</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <h1>Waiting Jobs</h1>
+
+            <!-- Display success or error messages -->
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-success">@TempData["Message"]</div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+
+            <!-- Table displaying waiting jobs -->
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Job Id</th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Description</th>
+                        <th>Min Salary</th>
+                        <th>Max Salary</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Posted Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Model) // Ensure Model is not null
+                    {
+                        <tr>
+                            <td>@job.JobId</td>
+                            <td>@job.JobTitle</td>
+                            <td>@job.CompanyName</td>
+                            <td>@job.JobDescription</td>
+                            <td>@job.MinSalary.ToString("C")</td>
+                            <td>@job.MaxSalary.ToString("C")</td>
+                            <td>@job.JobCategory</td>
+                            <td>@job.JobType</td>
+                            <td>@job.CreatedAt.ToString("MM/dd/yyyy")</td>
+                            <td>
+                                <form asp-action="Approve" asp-controller="AdminPosts" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@job.JobId" />
+                                    <button type="submit" class="approve-btn">Approve</button>
+                                </form>
+
+                                <button class="edit-btn">Edit</button>
+
+                                <!-- Create a form for the DELETE action -->
+                                <form asp-action="Remove" asp-controller="AdminPosts" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@job.JobId" />
+                                    <button type="submit" class="delete-btn">Remove</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
