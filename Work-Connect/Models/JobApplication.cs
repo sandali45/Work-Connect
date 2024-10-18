@@ -4,13 +4,16 @@ namespace Work_Connect.Models
 {
     public class JobApplication
     {
-        [Key] // This annotation specifies that ApplicationId is the primary key
-        public int ApplicationId { get; set; } // Primary key
+        [Key]
+        public int ApplicationId { get; set; }
 
-        public int JobID { get; set; } // Foreign key for the associated job
+        public int JobID { get; set; }
 
-        public string ApplicantName { get; set; } // Applicant's name
+        public string ApplicantName { get; set; }
 
-        public string Resume { get; set; } // Base64 or file path for the resume
+        public string Resume { get; set; }
+
+        public string UserID { get; set; } // Add UserID field
+
     }
 }
