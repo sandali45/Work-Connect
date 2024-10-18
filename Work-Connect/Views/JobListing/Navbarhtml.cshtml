@@ -19,10 +19,10 @@
             <span class="work-connect">work | connect</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#" data-page="home">Home</a></li>
-            <li><a href="#" data-page="jobs" class="active">Jobs</a></li>
-            <li><a href="#" data-page="about">About Us</a></li>
-            <li><a href="#" data-page="contact">Contact Us</a></li>
+            <li><a href="@Url.Action("home", "Home")" data-page="home">Home</a></li>
+            <li><a href="@Url.Action("Jobpagehtml", "Jobpage")" data-page="jobs" class="active">Jobs</a></li>
+            <li><a href="@Url.Action("home", "Home")" data-page="about">About Us</a></li>
+            <li><a href="@Url.Action("contact", "Home")" data-page="contact">Contact Us</a></li>
         </ul>
         <div class="search-profile">
             <div class="search-bar">
@@ -30,7 +30,7 @@
                 <button><i class="fas fa-search"></i></button>
             </div>
             <div class="profile-icon">
-                <a href="#"><img src="~/images/pf.png" alt="Profile"></a>
+                <a href="@Url.Action("Profile", "Profile")"><img src="~/images/pf.png" alt="Profile"></a>
             </div>
         </div>
     </nav>

@@ -1,0 +1,42 @@
+﻿@model Work_Connect.Models.VerifiedUsers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Verified Company</title>
+    <link rel="stylesheet" href="~/css/EditVerifiedCompany.css">
+</head>
+<body>
+    <div class="edit-container">
+        <h2>Add Verified Company</h2>
+        @using (Html.BeginForm("Adduser", "AdminVerifiedUsers", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <label>UserID</label>
+                @Html.TextBoxFor(m => m.UserID)
+            </div>
+            <div>
+                <label>UserName:</label>
+                @Html.TextBoxFor(m => m.UserName)
+            </div>
+            <div>
+                <label>UserEmail:</label>
+                @Html.TextBoxFor(m => m.UserEmail)
+            </div>
+            <div>
+                <label>TelephoneNumber:</label>
+                @Html.TextBoxFor(m => m.TelephoneNumber)
+            </div>
+            <div>
+                <label>CompanyID:</label>
+                @Html.TextBoxFor(m => m.CompanyID)
+            </div>
+            <button type="submit">Add Company</button>
+        }
+        <a href="@Url.Action("AdminVerifiedUsers", "AdminVerifiedUsers")">Back to List</a>
+    </div>
+</body>
+</html>

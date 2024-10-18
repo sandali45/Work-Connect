@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Nav bar";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar with Moving Gradient</title>
+    <link rel="stylesheet" href="~/css/stylesnav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <a asp-controller="NavbarController" asp-action="post" class="nav-link"></a>
+   
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="~/images/logo.png" alt="Logo">
+            <span class="work-connect">work | connect</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="@Url.Action("home", "Home")" data-page="home">Home</a></li>
+            <li><a href="@Url.Action("Jobpagehtml", "Jobpage")" data-page="jobs" class="active">Jobs</a></li>
+            <li><a href="@Url.Action("home", "Home")" data-page="about">About Us</a></li>
+            <li><a href="@Url.Action("contact", "Home")" data-page="contact">Contact Us</a></li>
+        </ul>
+        <div class="search-profile">
+            <div class="search-bar">
+                <input type="text" placeholder="Title, skill or company">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="profile-icon">
+                <a href="@Url.Action("Profile", "Profile")"><img src="~/images/pf.png" alt="Profile"></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <script src="scriptnav.js"></script>
+</body>
+</html>

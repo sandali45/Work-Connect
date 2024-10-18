@@ -12,8 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLConnection1")));
 
-builder.Services.AddScoped< JobService>(); // Registered my jobservice
-
+// Register JobService (Dependency Injection)
+builder.Services.AddScoped<JobService>();
 
 var app = builder.Build();
 

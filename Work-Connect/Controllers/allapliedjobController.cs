@@ -2,9 +2,9 @@
 
 namespace Work_Connect.Controllers
 {
-    public class ApcdController : Controller
+    public class allapliedjobController : Controller
     {
-        public IActionResult Appliedcandidate()
+        public IActionResult allapliedjob()
         {
             return View();
         }

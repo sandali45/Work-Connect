@@ -16,18 +16,19 @@ namespace Work_Connect.Services
             _context = context;
         }
 
-        public async Task<List<Job>> SearchJobsBySkills(string searchQuery)
+        // Method to search jobs by skills or keywords
+        public async Task<List<postAJob>> SearchJobsBySkills(string searchQuery)
         {
             if (string.IsNullOrEmpty(searchQuery))
             {
-                // Return all jobs if the search query is empty
-                return await _context.Jobs.ToListAsync();
+                return await _context.postAJob.ToListAsync(); // Return all jobs if no search query
             }
 
-            // Search for jobs containing the specified skills
-            return await _context.Jobs
-                .Where(j => j.Skills.Contains(searchQuery))
-                .ToListAsync();
+            return await _context.postAJob
+                .Where(job => job.JobTitle.Contains(searchQuery) ||
+                              job.CompanyName.Contains(searchQuery) ||
+                              job.JobDescription.Contains(searchQuery))
+                .ToListAsync(); // Filter jobs based on title, company, or description
         }
     }
 }

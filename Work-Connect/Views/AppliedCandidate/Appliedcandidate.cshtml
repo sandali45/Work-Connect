@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Navigation</title>
+    <link rel="stylesheet" href="~/css/Appliedcandidate.css">
+    <style>
+        /* Style for the popup chat window */
+    </style>
+</head>
+<body>
+    @Html.Partial("Navbarhtml")
+    <div class="background-wrapper">
+        <div class="dot"></div>
+        <p class="text-with-dot">Applied Candidate</p>
+    </div>
+    <hr />
+    <div>
+
+        <p style="font-weight: bold; font-size: 18px; color:black;">Software Engineer</p>
+
+    </div>
+
+    <div class="right-box-container">
+        <!-- Candidate Box -->
+        <div class="right-box">
+            <div class="image-container">
+                <img src="~/images/pfpic.png" alt="Profile Picture" class="profile-img">
+            </div>
+            <div class="text-button-container">
+                <h3>Sua Johathon</h3>
+                <div class="button-container">
+                    <button class="action-button1">CV</button>
+                    <button class="action-button11" onclick="openForm()">Schedule an Interview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Form for Scheduling -->
+    <div class="chat-popup" id="myForm">
+        <form action="#" class="form-container">
+            <h3>Schedule Interview</h3>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="datetime">Date & Time</label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+</body>
+</html>

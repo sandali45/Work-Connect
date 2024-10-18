@@ -2,13 +2,15 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Work_Connect.Models;
-using Work_Connect.Helpers;  
+using Work_Connect.Helpers;
+using Work_Connect.Data; // Add the correct namespace for ApplicationDbContext
 
 public class SignUpController : Controller
 {
-    private readonly SignupDbContext _context;  
+    private readonly ApplicationDbContext _context;
 
-    public SignUpController(SignupDbContext context)
+    // Constructor to inject the database context
+    public SignUpController(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -20,45 +22,32 @@ public class SignUpController : Controller
     }
 
     [HttpPost]
-    public IActionResult SignUp(string name, string email, string password)
+    public async Task<IActionResult> SignUp(string name, string email, string password)
     {
-        // Server-side email validation
-        if (!email.Contains("@") || !email.Contains("."))
-        {
-            ViewBag.ErrorMessage = "Please enter a valid email address.";
-            return View();
-        }
-
-        // Server-side password validation (exactly 6 characters)
-        if (password.Length != 6)
-        {
-            ViewBag.ErrorMessage = "Password must be exactly 6 characters long.";
-            return View();
-        }
-
-        // Check if the user already exists by email
+        // Check if a user with the same email already exists in the database
         var existingUser = _context.Users.FirstOrDefault(u => u.Email == email);
         if (existingUser != null)
         {
-            ViewBag.ErrorMessage = "User with this email already exists. Please try logging in or reset your password.";
+            ViewBag.ErrorMessage = "User with this email already exists.";
             return View();
         }
 
-        // Hash the password before saving
-        string hashedPassword = PasswordHelper.HashPassword(password);
+        // Hash the password before saving it to the database
+        var hashedPassword = PasswordHelper.HashPassword(password);
 
-        // Create a new user
+        // Create a new user object
         var newUser = new User
         {
             Name = name,
             Email = email,
-            Password = hashedPassword  // Save hashed password
+            Password = hashedPassword
         };
 
+        // Add the new user to the Users table in the database
         _context.Users.Add(newUser);
-        _context.SaveChanges();  // Save the new user to the database
+        await _context.SaveChangesAsync(); // Save changes asynchronously
 
-        ViewBag.SuccessMessage = "User created successfully!";
-        return View();
+        // Redirect to the home page after a successful signup
+        return RedirectToAction("home", "Home");
     }
 }

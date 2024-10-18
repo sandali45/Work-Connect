@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Work_Connect.Models.VerifiedCompany>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified Companies</title>
+    <link rel="stylesheet" href="~/css/AdminVerifiedcompanies.css">
+    <style>
+        /* Add some basic styles for the buttons */
+        .btn {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .edit-btn {
+            background-color: #4169E1; /* Bootstrap primary color */
+        }
+
+        .delete-btn {
+            background-color: #dc3545; /* Bootstrap danger color */
+        }
+
+            .delete-btn:hover, .edit-btn:hover {
+                opacity: 0.8; /* Slightly darker on hover */
+            }
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #A68DE1;
+        }
+
+        th {
+            background-color: #A68DE1;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Highlight on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verified Companies</h1>
+        <h4>
+            <a href="@Url.Action("Add", "AdminVerifiedcompanies")" style="
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #322451;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;"
+               onmouseover="this.style.backgroundColor='#365f9b'"
+               onmouseout="this.style.backgroundColor='#4169E1'">
+                Add New Company
+            </a>
+        </h4>
+
+        <!-- Search Form -->
+        <div class="search-container">
+            @using (Html.BeginForm("Search", "AdminVerifiedcompanies", FormMethod.Get))
+            {
+                <input type="text" name="query" class="search-bar" placeholder="Company Name..." />
+                <button type="submit" class="btn edit-btn">Search</button>
+            }
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Company Type</th>
+                    <th>Location</th>
+                    <th>Actions</th> <!-- New Actions Column -->
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var job in Model)
+                    {
+                        <tr>
+                            <td>@job.companyId</td>
+                            <td>@job.companyName</td>
+                            <td>@job.companyEmail</td>
+                            <td>@job.companyType</td>
+                            <td>@job.location</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="@Url.Action("Edit", "AdminVerifiedcompanies", new { id = job.companyId })" class="btn edit-btn">Edit</a>
+                                <form action="@Url.Action("Delete", "AdminVerifiedcompanies", new { id = job.companyId })" method="post" style="display:inline;">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this company?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" style="text-align:center;">No verified companies found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+﻿/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* Title Section */
+.background-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Space around title */
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 30px;
+    height: 30px;
+    background-color: #A68DE1;
+    border-radius: 50%; /* Makes it a circle */
+    margin-right: 10px; /* Space between dot and text */
+}
+
+.text-with-dot {
+    font-size: 40px; /* Increase font size for better visibility */
+    color: #102842;
+    font-weight: bold; /* Make the text bold */
+}
+
+.job-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+.square {
+    background-color: #A68DE1;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.bottom-section {
+    width: 100%;
+    padding: 50px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.card-link {
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    min-height: 350px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-content {
+    padding: 10px 0;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.card-subtitle {
+    font-weight: 600;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-weight: 400;
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+    line-height: 1.4;
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card-button {
+    flex: 1; /* Make buttons equal width */
+    text-align: center;
+    padding: 10px; /* Adjust padding for larger buttons */
+    border-radius: 12px;
+    margin-right: 10px; /* Add space between buttons */
+    transition: background-color 0.3s ease;
+}
+
+    .card-button:last-child {
+        margin-right: 0; /* Remove margin from the last button */
+    }
+
+.apply-button {
+    background-color: #A68DE1; /* Apply button color */
+    color: white;
+}
+
+.verified-button {
+    background-color: #635BFF; /* Different color for verified button */
+    color: white;
+}
+
+.verify-button {
+    background-color: #FFA500; /* Color for verify button */
+    color: white;
+}
+
+.card-button:hover {
+    opacity: 0.8; /* Slight hover effect */
+}
+
+/* Three cards in one line */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    /* Two cards per row for medium-sized screens */
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* One card per row for small screens */
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .bottom-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        min-height: 250px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-subtitle {
+        font-size: 12px;
+    }
+
+    .card-description {
+        font-size: 10px;
+    }
+
+    .bottom-section {
+        padding: 20px;
+    }
+}

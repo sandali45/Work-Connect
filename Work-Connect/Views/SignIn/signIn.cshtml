@@ -14,14 +14,16 @@
             <h2>Sign In</h2>
             <p>Stay updated on your professional world.</p>
 
+            <!-- Display error message -->
             @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
             {
-                        <div class="error-message">
+                <div class="error-message">
                     @ViewBag.ErrorMessage
-                        </div>
+                </div>
             }
 
-            <form asp-action="SignIn" asp-controller="SignIn" method="post"> 
+            <!-- Sign In Form -->
+            <form asp-action="SignIn" asp-controller="SignIn" method="post">
                 <input type="text" name="email" placeholder="Email or phone" required>
                 <div class="password-container">
                     <input type="password" name="password" id="password" placeholder="Password" required>

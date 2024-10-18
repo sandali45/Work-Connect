@@ -1,7 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "postJob";
+    ViewData["Title"] = "Post Job";
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,27 +8,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Posting Form</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="/css/postJob.css">
 </head>
 
 <body>
-    <form class="job-form" action="waitingForApproval">
+    @Html.Partial("Navbarhtml")
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="~/images/logo.svg" alt="Logo" class="logo">
+                <div class="logo-text">work | connect</div>
+            </div>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="@Url.Action("Jobpagehtml", "Jobpage")">Jobs</a></li>
+                <li><a href="home">About Us</a></li>
+                <li><a href="@Url.Action("contact", "Home")">Contact Us</a></li>
+            </ul>
+            <form action="/Jobs/Search" method="GET">
+                <input type="text" name="searchQuery" placeholder="Search by skill">
+                <button type="submit">Search</button>
+            </form>
+
+            <a href="@Url.Action("Profile", "Profile")">
+                <img src="~/images/undraw_Pic_profile_re_7g2h-removebg-preview 1.svg" alt="User Icon" class="user-icon">
+            </a>
+        </nav>
+    </header>
+    <form class="job-form" asp-action="PostJob" asp-controller="PostJob" method="post">
+
         <div class="job-first-row">
             <div class="job-form-group">
                 <label for="job-title-input" class="job-form-label">Job Title<span>*</span></label>
-                <input type="text" id="job-title-input" name="job-title" class="job-form-input" required>
+                <input type="text" id="job-title-input" name="JobTitle" class="job-form-input" required>
             </div>
 
             <div class="job-form-group">
-                <label for="employment-type-select" class="job-form-label">Company Name<span>*</span></label>
-                <input type="text" id="employment-type-select" name="employment-type" class="job-form-select" placeholder="Full Name" required>
+                <label for="company-name-input" class="job-form-label">Company Name<span>*</span></label>
+                <input type="text" id="company-name-input" name="CompanyName" class="job-form-input" placeholder="Company Name" required>
             </div>
         </div>
+
         <div class="job-form-group">
             <label for="job-description-textarea" class="job-form-label">Job Description<span>*</span></label>
-            <textarea id="job-description-textarea" name="job-description" class="job-form-textarea" rows="4"
-                      required></textarea>
+            <textarea id="job-description-textarea" name="JobDescription" class="job-form-textarea" rows="4" required></textarea>
         </div>
 
         <div class="job-form-group">
@@ -37,80 +60,100 @@
             <div class="job-salary-range">
                 <div class="salary-input-wrapper">
                     <span class="currency-symbol">$</span>
-                    <input type="number" id="min-salary-input" name="min-salary" class="job-form-input-salary"
-                           placeholder="Min" required>
+                    <input type="number" id="min-salary-input" name="MinSalary" class="job-form-input-salary" placeholder="Min" required>
                 </div>
                 <div class="salary-input-wrapper">
                     <span class="currency-symbol">$</span>
-                    <input type="number" id="max-salary-input" name="max-salary" class="job-form-input-salary"
-                           placeholder="Max" required>
+                    <input type="number" id="max-salary-input" name="MaxSalary" class="job-form-input-salary" placeholder="Max" required>
                 </div>
             </div>
         </div>
 
+        <!-- Job Categories -->
         <div class="job-form-category">
             <div class="job-form-group">
                 <label class="job-form-label">Job Category</label>
                 <div class="job-checkbox-group">
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category"
-                               value="software-development" class="job-form-checkbox"> Software Development
+                        <input type="checkbox" name="JobCategory" value="software-development" class="job-form-checkbox"> Software Development
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category" value="marketing"
-                               class="job-form-checkbox"> Marketing
+                        <input type="checkbox" name="JobCategory" value="marketing" class="job-form-checkbox"> Marketing
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category" value="business-sales"
-                               class="job-form-checkbox"> Business & Sales
+                        <input type="checkbox" name="JobCategory" value="business-sales" class="job-form-checkbox"> Business & Sales
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category"
-                               value="writing-translation" class="job-form-checkbox"> Writing & Translation
+                        <input type="checkbox" name="JobCategory" value="writing-translation" class="job-form-checkbox"> Writing & Translation
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category" value="administration"
-                               class="job-form-checkbox"> Administration
+                        <input type="checkbox" name="JobCategory" value="administration" class="job-form-checkbox"> Administration
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-category" value="other"
-                               class="job-form-checkbox"> Other
+                        <input type="checkbox" name="JobCategory" value="other" class="job-form-checkbox"> Other
                     </label>
                 </div>
             </div>
 
+            <!-- Job Types -->
             <div class="job-form-group">
                 <label class="job-form-label">Job Type</label>
                 <div class="job-checkbox-group">
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-type" value="internship"
-                               class="job-form-checkbox"> Internship
+                        <input type="checkbox" name="JobType" value="internship" class="job-form-checkbox"> Internship
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-type" value="freelancer"
-                               class="job-form-checkbox"> Freelancer
+                        <input type="checkbox" name="JobType" value="freelancer" class="job-form-checkbox"> Freelancer
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-type" value="part-time"
-                               class="job-form-checkbox"> Part-time
+                        <input type="checkbox" name="JobType" value="part-time" class="job-form-checkbox"> Part-time
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-type" value="full-time"
-                               class="job-form-checkbox"> Full-time
+                        <input type="checkbox" name="JobType" value="full-time" class="job-form-checkbox"> Full-time
                     </label>
                     <label class="job-checkbox-label">
-                        <input type="checkbox" name="job-type" value="include-all"
-                               class="job-form-checkbox"> Include All
+                        <input type="checkbox" name="JobType" value="include-all" class="job-form-checkbox"> Include All
                     </label>
                 </div>
             </div>
         </div>
 
+        <!-- Form Actions -->
         <div class="job-form-actions">
-            <button type="button" class="job-cancel-btn">Cancel</button>
+            <button type="reset" class="job-cancel-btn">Cancel</button> <!-- Reset form fields -->
             <button type="submit" class="job-post-job-btn">Post Job</button>
         </div>
     </form>
+
+    <!-- Script to concatenate checkbox values for JobCategory and JobType -->
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            const categoryCheckboxes = document.querySelectorAll('input[name="JobCategory"]:checked');
+            const jobTypeCheckboxes = document.querySelectorAll('input[name="JobType"]:checked');
+
+            const selectedCategories = Array.from(categoryCheckboxes).map(cb => cb.value).join(",");
+            const selectedJobTypes = Array.from(jobTypeCheckboxes).map(cb => cb.value).join(",");
+
+            // Ensure hidden inputs are created for JobCategory and JobType
+            let categoryInput = document.querySelector('input[name="JobCategoryHidden"]');
+            if (!categoryInput) {
+                categoryInput = document.createElement('input');
+                categoryInput.type = 'hidden';
+                categoryInput.name = 'JobCategoryHidden';
+                this.appendChild(categoryInput);
+            }
+            categoryInput.value = selectedCategories;
+
+            let jobTypeInput = document.querySelector('input[name="JobTypeHidden"]');
+            if (!jobTypeInput) {
+                jobTypeInput = document.createElement('input');
+                jobTypeInput.type = 'hidden';
+                jobTypeInput.name = 'JobTypeHidden';
+                this.appendChild(jobTypeInput);
+            }
+            jobTypeInput.value = selectedJobTypes;
+        });
+    </script>
 </body>
 
 </html>

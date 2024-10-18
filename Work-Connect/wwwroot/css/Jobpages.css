@@ -1,0 +1,99 @@
+﻿/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff; /* White background */
+}
+
+/* Outer Container Styling */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Smaller max width */
+    width: 90%;
+}
+
+/* Title Styling */
+.title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Navigation Items */
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Color Box Styling */
+.color-box {
+    background: #635BFF;
+    border-radius: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .color-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+/* Navigation Link Styling */
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+    .nav-link:hover {
+        background: #A68DE1; /* Darker background on hover */
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

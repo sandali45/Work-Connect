@@ -1,38 +1,98 @@
 ﻿@{
-    ViewData["Title"] = "Manage Job page";
+    ViewData["Title"] = "Manage Job Page";
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Navigation</title>
-    <link rel="stylesheet" href="~/css/Managejob.css">
-    <a asp-controller="ManageController" asp-action="post" class="nav-link"></a>
+    <title>@ViewData["Title"]</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .content {
+            flex: 1;
+            max-width: 400px; /* Limit width for content */
+            padding: 20px;
+        }
+
+        .buttons-container {
+            display: flex; /* Use flexbox for button layout */
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px; /* Space between buttons */
+        }
+
+        .button {
+            background-color: #635BFF;
+            border: none;
+            color: white;
+            padding: 15px; /* Padding for button */
+            text-align: center;
+            text-decoration: none;
+            display: flex; /* Flexbox for button content */
+            justify-content: center; /* Center content */
+            align-items: center; /* Center content vertically */
+            font-size: 16px;
+            width: 100%; /* Full width of the container */
+            cursor: pointer;
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #4A47C2; /* Darker shade on hover */
+        }
+
+        .image-container {
+            flex: 1;
+            min-width: 300px; /* Minimum width for image container */
+            padding: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners for image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        /* Responsive Text */
+        p {
+            font-size: 2vw; /* Responsive font size */
+            margin: 20px 0; /* Space around the paragraph */
+        }
+
+        
+        }
+    </style>
 </head>
 <body>
-    <div class="background-wrapper">
-        <div class="left-column">
+    @Html.Partial("Navbarhtml")
+    <div class="container">
+        <div class="content">
             <div class="buttons-container">
-    <a href="@Url.Action("postedjobhtml", "Postedjob")" class="job-button">Posted Job</a>
-    <a href="@Url.Action("Appliedcandidate", "Apcd")" class="job-button">Applied Candidates</a>
-</div>
-            <div class="button-description">
-                <p>“The future of work is distributed,</p>
-                <p style="text-align: center;">Flexible,</p>
-                <p style="text-align: left;">and Powered by technology."</p>
+                <a href="@Url.Action("allpostedjob", "allpostedjob")" class="button">Posted Job</a>
+                <a href="@Url.Action("Appliedcandidate", "Appliedcandidate")" class="button">Applied Candidates</a>
             </div>
+            <p>“The future of work is distributed, Flexible, and Powered by technology."</p>
         </div>
-        <div class="colored-background"></div>
-        <div class="white-rectangle">
-            <img src="~/images/picmg.png" alt="Description of image" style="width: 100%; height: auto;">
-        </div>
-        <div class="colored-lines">
-            <div class="line22 line-one1"></div>
-            <div class="line22 line-two2"></div>
+        <div class="image-container">
+            <img src="~/images/picmg.png" alt="Description of image">
         </div>
     </div>
-
     <script src="commompage.js"></script>
 </body>
 </html>

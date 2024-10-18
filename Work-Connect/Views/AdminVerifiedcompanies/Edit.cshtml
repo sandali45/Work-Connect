@@ -1,0 +1,42 @@
+﻿@model Work_Connect.Models.VerifiedCompany
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Verified Company</title>
+    
+    <link rel="stylesheet" href="~/css/EditVerifiedCompany.css"> <!-- Link to CSS file -->
+</head>
+
+<body>
+    <h2>Edit Verified Company</h2>
+
+    @using (Html.BeginForm("Edit", "AdminVerifiedcompanies", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.companyId)
+
+        <div>
+            <label>Company Name:</label>
+            @Html.TextBoxFor(m => m.companyName)
+        </div>
+        <div>
+            <label>Company Email:</label>
+            @Html.TextBoxFor(m => m.companyEmail)
+        </div>
+        <div>
+            <label>Company Type:</label>
+            @Html.TextBoxFor(m => m.companyType)
+        </div>
+        <div>
+            <label>Location:</label>
+            @Html.TextBoxFor(m => m.location)
+        </div>
+        <button type="submit">Save</button>
+    }
+    <a href="@Url.Action("AdminVerifiedcompanie", "AdminVerifiedcompanies")">Back to List</a>
+</body>
+</html>
