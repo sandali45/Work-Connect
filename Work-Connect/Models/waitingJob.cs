@@ -30,10 +30,10 @@ namespace Work_Connect.Models
         public decimal MaxSalary { get; set; } 
 
         [MaxLength(255)]
-        public string JobCategory { get; set; } 
+        public string? JobCategory { get; set; } 
 
         [MaxLength(255)]
-        public string JobType { get; set; }
+        public string? JobType { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }
