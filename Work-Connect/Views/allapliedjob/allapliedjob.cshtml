@@ -24,7 +24,11 @@
                     <div class="text-button-container">
                         <h3>@job.JobTitle</h3>
                         <p>@job.ApplicantName</p>
-                        <button class="action-button">Remove</button>
+                        <form action="@Url.Action("Remove", "allapliedjob", new { id = job.ApplicationId })" method="post" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="action-button" onclick="return confirm('Are you sure you want to delete this company?');">Remove</button>
+                        </form>
+                        
                     </div>
                 </div>
             }
