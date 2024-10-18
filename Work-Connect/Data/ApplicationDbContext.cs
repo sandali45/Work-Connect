@@ -16,5 +16,7 @@ namespace Work_Connect.Data
         public DbSet<VerifiedCompany> VerifiedCompany { get; set; }
         public DbSet<Admins> Admins { get; set; }
         public DbSet<WaitingJob> WaitingJobs { get; set; }
+
+        public DbSet<VerifiedUsers> VerifiedUsers { get; set; }
     }
 }

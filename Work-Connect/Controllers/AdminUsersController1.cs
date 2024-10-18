@@ -30,14 +30,14 @@ namespace Work_Connect.Controllers
             if (user == null)
             {
                 TempData["Error"] = "User not found.";
-                return RedirectToAction("Index");
+                return RedirectToAction("users");
             }
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
             TempData["Message"] = "User deleted successfully.";
-            return RedirectToAction("Index");
+            return RedirectToAction("users");
         }
 
     }
