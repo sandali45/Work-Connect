@@ -13,33 +13,146 @@
     <link rel="stylesheet" href="~/CSS/jobListNew.css">
 </head>
 <body>
-    <div class="top-section">
-        <div class="job-list">
-            <div class="square"></div>
-            <h1>Job List</h1>
+    <div class="main-content">
+        <div class="top-section">
+            <div class="job-list">
+                <div class="square"></div>
+                <h1>Job List</h1>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="card-container">
+                @foreach (var job in Model)
+                {
+                    <a href="#" class="card-link" onclick="openModal('@job.JobTitle', '@job.CompanyName', '@job.JobId')">
+                        <div class="card">
+                            <img src="~/images/job.png" alt="Job Image" class="card-image">
+                            <div class="card-content">
+                                <div class="card-title">@job.CompanyName</div>
+                                <div class="card-subtitle">@job.JobTitle</div>
+                                <div class="card-description">@job.JobDescription</div>
+                            </div>
+                            <div class="card-footer">
+                                <span class="card-button">Apply</span>
+                                <span class="card-button">@job.MaxSalary</span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
         </div>
     </div>
 
-    <div class="bottom-section">
-        <div class="card-container">
-            @foreach (var job in Model)
-            {
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img src="~/images/job.png" alt="Job Image" class="card-image">
-                        <div class="card-content">
-                            <div class="card-title">@job.CompanyName</div>
-                            <div class="card-subtitle">@job.JobTitle</div>
-                            <div class="card-description">@job.JobDescription</div>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-button">EmploymentType</span>
-                            <span class="card-button">@job.MaxSalary</span>
-                        </div>
-                    </div>
-                </a>
-            }
+    <!-- Modal Popup Structure -->
+    <div id="modal" class="modal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background-color: #fff; padding: 20px; border-radius: 10px; width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
+            <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #635BFF;">&times;</span>
+            <h2 style="text-align: center; color: #333;">Apply for Job</h2>
+
+            <label for="modal-job-title" style="font-weight: bold;">Job Title:</label>
+            <div id="modal-job-title" class="modal-info" style="margin-bottom: 10px; font-weight: bold;"></div>
+
+            <label for="modal-company-name" style="font-weight: bold;">Company Name:</label>
+            <div id="modal-company-name" class="modal-info" style="margin-bottom: 10px; font-weight: bold;"></div>
+
+            <input type="hidden" id="job-id" name="job-id">
+
+            <label for="name" style="font-weight: bold;">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-bottom: 10px;">
+
+            <button onclick="document.getElementById('resume').click()" style="background-color: #635BFF; color: white; border: none; border-radius: 4px; padding: 10px; cursor: pointer; margin-bottom: 10px;">
+                Upload Resume
+            </button>
+            <input type="file" id="resume" accept=".pdf,.doc" style="display: none;" onchange="showFileName()" />
+            <div id="file-name" style="margin-top: 10px; color: #555;"></div>
+
+            <div id="error-message" style="color: red; margin-top: 10px; display: none;">Please enter your name and upload a resume.</div>
+
+            <button type="button" onclick="submitApplication()" style="background-color: #A68DE1; color: white; border: none; border-radius: 4px; padding: 10px; cursor: pointer; margin-top: 10px; width: 100%;">
+                Submit
+            </button>
         </div>
     </div>
+
+    <script>
+        let jobTitle, companyName, jobId;
+
+        // Function to open the modal
+        function openModal(title, company, id) {
+            jobTitle = title;
+            companyName = company;
+            jobId = id;
+
+            document.getElementById("modal").style.display = "flex";
+            document.getElementById("modal-job-title").textContent = jobTitle;
+            document.getElementById("modal-company-name").textContent = companyName;
+            document.getElementById("job-id").value = jobId;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("error-message").style.display = "none";
+            document.getElementById("file-name").textContent = "";
+        }
+
+        function showFileName() {
+            const fileInput = document.getElementById("resume");
+            const fileNameDisplay = document.getElementById("file-name");
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `${fileInput.files[0].name} selected`;
+            } else {
+                fileNameDisplay.textContent = "";
+            }
+        }
+
+        function submitApplication() {
+            const jobId = document.getElementById("job-id").value;
+            const applicantName = document.getElementById("name").value.trim();
+            const resumeFile = document.getElementById("resume").files[0]; // Ensure file is selected
+
+            if (!applicantName || !resumeFile) {
+                document.getElementById("error-message").style.display = "block";
+                return; // Stops execution if file or name is missing
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const resumeData = e.target.result;
+
+                const applicationData = {
+                    JobID: jobId,
+                    ApplicantName: applicantName,
+                    Resume: resumeData // Base64 format
+                };
+
+                fetch('/JobListing/SubmitApplication', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(applicationData)
+                })
+                    .then(response => {
+                        return response.json(); // Convert response to JSON for better error details
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            alert('Application submitted successfully!');
+                            closeModal();
+                        } else {
+                            alert('Failed to submit the application: ' + data.message); // Show server message
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the application.');
+                    });
+            };
+
+            reader.readAsDataURL(resumeFile); // Ensure the file is read
+        }
+    </script>
 </body>
 </html>
