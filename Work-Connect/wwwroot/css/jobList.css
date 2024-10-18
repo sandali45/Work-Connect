@@ -144,21 +144,36 @@ body, html {
 }
 
 .card-button {
-    background-color: #635BFF;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 8px 12px;
-    font-weight: 500;
+    flex: 1; /* Make buttons equal width */
     text-align: center;
-    cursor: pointer;
-    font-size: 14px;
+    padding: 10px; /* Adjust padding for larger buttons */
+    border-radius: 12px;
+    margin-right: 10px; /* Add space between buttons */
     transition: background-color 0.3s ease;
 }
 
-    .card-button:hover {
-        background-color: #836AFF;
+    .card-button:last-child {
+        margin-right: 0; /* Remove margin from the last button */
     }
+
+.apply-button {
+    background-color: #A68DE1; /* Apply button color */
+    color: white;
+}
+
+.verified-button {
+    background-color: #635BFF; /* Different color for verified button */
+    color: white;
+}
+
+.verify-button {
+    background-color: #FFA500; /* Color for verify button */
+    color: white;
+}
+
+.card-button:hover {
+    opacity: 0.8; /* Slight hover effect */
+}
 
 /* Three cards in one line */
 .card-container {

@@ -4,16 +4,25 @@ namespace Work_Connect.Models
 {
     public class JobApplication
     {
-        [Key]
-        public int ApplicationId { get; set; }
+        [Key] // This attribute marks ApplicationId as the primary key
+        public int ApplicationId { get; set; } // Primary key with auto-increment
 
-        public int JobID { get; set; }
+        public int JobID { get; set; } // JobID provided manually
 
-        public string ApplicantName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string JobTitle { get; set; } // Job title
 
-        public string Resume { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string CompanyName { get; set; } // Company name
 
-        public string UserID { get; set; } // Add UserID field
+        [Required]
+        [StringLength(100)]
+        public string ApplicantName { get; set; } // Applicant's name
 
+        public string Resume { get; set; } // Resume as a base64-encoded string
     }
+
 }
+

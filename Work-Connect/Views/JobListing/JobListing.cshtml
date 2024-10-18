@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/CSS/jobList.css">
 </head>
@@ -35,11 +36,16 @@
                                 <div class="card-title">@job.CompanyName</div>
                                 <div class="card-subtitle">@job.JobTitle</div>
                                 <div class="card-description">@job.JobDescription</div>
+                                <div class="card-description">@job.JobType</div>
+                        <div class="card-description">@job.MaxSalary</div>
                             </div>
-                            <div class="card-footer">
-                                <span class="card-button">Apply</span>
-                                <span class="card-button">@job.MaxSalary</span>
-                            </div>
+                    <div class="card-footer">
+                        <span class="card-button apply-button">Apply</span>
+                        <span class="card-button verified-button">
+                            Verified<i class="fas fa-check-circle"></i> <!-- Font Awesome check mark -->
+                        </span>
+                        
+                    </div>
                         </div>
                     </a>
                 }
@@ -53,15 +59,15 @@
             <span class="close" onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #635BFF;">&times;</span>
             <h2 style="text-align: center; color: #333;">Apply for Job</h2>
 
-            <label for="modal-job-title" style="font-weight: bold;">Job Title:</label>
+            <label for="modal-job-title" >Job Title:</label>
             <div id="modal-job-title" class="modal-info" style="margin-bottom: 10px; font-weight: bold;"></div>
 
-            <label for="modal-company-name" style="font-weight: bold;">Company Name:</label>
+            <label for="modal-company-name" >Company Name:</label>
             <div id="modal-company-name" class="modal-info" style="margin-bottom: 10px; font-weight: bold;"></div>
 
             <input type="hidden" id="job-id" name="job-id">
 
-            <label for="name" style="font-weight: bold;">Full Name:</label>
+            <label for="name" >Full Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-bottom: 10px;">
 
             <button onclick="document.getElementById('resume').click()" style="background-color: #635BFF; color: white; border: none; border-radius: 4px; padding: 10px; cursor: pointer; margin-bottom: 10px;">
