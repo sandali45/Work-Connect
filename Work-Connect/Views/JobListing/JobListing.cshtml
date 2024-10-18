@@ -10,19 +10,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/CSS/jobListNew.css">
+    <link rel="stylesheet" href="~/CSS/jobList.css">
 </head>
-<body>
-    <div class="main-content">
-        <div class="top-section">
-            <div class="job-list">
-                <div class="square"></div>
-                <h1>Job List</h1>
-            </div>
-        </div>
 
-        <div class="bottom-section">
-            <div class="card-container">
+<body>
+    @Html.Partial("Navbarhtml")
+    
+
+    <div class="background-wrapper">
+        <div class="title-container">
+            <div class="dot"></div>
+            <p class="text-with-dot">Job List</p>
+        </div>
+    </div>
+
+
+    <div class="card-container">
                 @foreach (var job in Model)
                 {
                     <a href="#" class="card-link" onclick="openModal('@job.JobTitle', '@job.CompanyName', '@job.JobId')">
@@ -41,8 +44,8 @@
                     </a>
                 }
             </div>
-        </div>
-    </div>
+      
+
 
     <!-- Modal Popup Structure -->
     <div id="modal" class="modal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center;">

@@ -3,49 +3,49 @@
 }
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Navigation</title>
-    <link rel="stylesheet" href="~/css/Jobpage.css">
-   <a asp-controller="JobpageController" asp-action="post" class="nav-link"></a>
-
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Jobpages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
+    @Html.Partial("Navbarhtml") <!-- Assuming this is a simplified Navbar -->
 
-    <div class="background-wrapper">
-        <div class="colored-background"></div>
-        <div class="colored-lines-up">
-            <div class="line2 line-one"></div>
-            <div class="line2 line-two"></div>
-        </div>
-        <div class="white-rectangle">
-            <div class="vertical-line">
-                <div class="dot"></div>
-                <div class="line"></div>
-                <div class="dot"></div>
-                <div class="line"></div>
-                <div class="dot"></div>
-                <div class="line"></div>
-                <div class="dot"></div>
-                
-            </div>
+    <div class="outer-container">
+        <div class="container">
+            <h1 class="title">Manage Your Jobs</h1>
             <div class="nav-items">
-                <a href="@Url.Action("JobListing", "JobListing")" class="nav-link">Jobs List</a>
-                <a href="@Url.Action("postJob", "PostJob")" class="nav-link">Post A Job</a>
-                <a href="@Url.Action("Managehtml", "Managejob")" class="nav-link">Manage Jobs</a>
-                <a href="@Url.Action("allapliedjob", "allapliedjob")" class="nav-link">Applied Jobs</a>
+                <div class="color-box">
+                    <a href="@Url.Action("JobListing", "JobListing")" class="nav-link">
+                        <i class="fas fa-list"></i> Jobs List
+                    </a>
+                </div>
+                <div class="color-box">
+                    <a href="@Url.Action("postJob", "PostJob")" class="nav-link">
+                        <i class="fas fa-plus-circle"></i> Post A Job
+                    </a>
+                </div>
+                <div class="color-box">
+                    <a href="@Url.Action("Managehtml", "Managejob")" class="nav-link">
+                        <i class="fas fa-tasks"></i> Manage Jobs
+                    </a>
+                </div>
+                <div class="color-box">
+                    <a href="@Url.Action("allapliedjob", "allapliedjob")" class="nav-link">
+                        <i class="fas fa-clipboard-list"></i> Applied Jobs
+                    </a>
+                </div>
             </div>
-            
+           
+        </div>
 
-        </div>
-        <div class="colored-lines">
-            <div class="line22 line-one1"></div>
-            <div class="line22 line-two2"></div>
-        </div>
     </div>
 
     <script src="commompage.js"></script>
-
 </body>
+
 </html>

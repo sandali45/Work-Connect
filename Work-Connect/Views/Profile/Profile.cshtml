@@ -15,6 +15,7 @@
      <a asp-controller="ProfileController" asp-action="post" class="nav-link"></a>
 </head>
 <body>
+    @Html.Partial("Navbarhtml")
     <div class="profile-header">
         <div class="cover-photo">
             <img id="cover-photo" src="placeholder.jpg">
@@ -91,7 +92,7 @@
         <div class="posts-section">
             <a href="" class="post-button">+Post a job</a>
             <a href="@Url.Action("Managehtml", "Managejob")" class="post-button">Manage job</a>
-            <a href="@Url.Action("Appliedcandidate", "Apcd")" class="post-button applied-jobs-button">Applied Jobs</a>
+            <a href="@Url.Action("Appliedcandidate", "Appliedcandidate")" class="post-button applied-jobs-button">Applied Jobs</a>
         </div>
 
         <div class="experience-section">
