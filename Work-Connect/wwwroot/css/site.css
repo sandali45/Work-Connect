@@ -1,30 +1,24 @@
-html {
-    font-size: 14px;
+/* Full-height layout to push footer to the bottom */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+/* Main container will fill available space */
+.content-container {
+    flex: 1;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
-}
-
+/* Footer specific styles */
 footer {
     background-color: #0f1c2d; /* Midnight Blue background */
     color: #ffffff;
     padding: 50px 10%;
+    margin-top: auto; /* Pushes footer to the bottom */
+    width: 100%; /* Ensure footer stretches full width */
+    box-sizing: border-box; /* Prevents padding from breaking layout */
 }
 
 .footer-content {
@@ -51,8 +45,8 @@ footer {
         }
 
 .footer-image {
-    width: 300px; /* Increase the width */
-    height: auto; /* Keep the aspect ratio */
+    width: 300px;
+    height: auto;
 }
 
     .footer-image img {
