@@ -14,28 +14,7 @@
 
 <body>
     @Html.Partial("Navbarhtml")
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img src="~/images/logo.svg" alt="Logo" class="logo">
-                <div class="logo-text">work | connect</div>
-            </div>
-            <ul>
-                <li><a href="home">Home</a></li>
-                <li><a href="@Url.Action("Jobpagehtml", "Jobpage")">Jobs</a></li>
-                <li><a href="home">About Us</a></li>
-                <li><a href="@Url.Action("contact", "Home")">Contact Us</a></li>
-            </ul>
-            <form action="/Jobs/Search" method="GET">
-                <input type="text" name="searchQuery" placeholder="Search by skill">
-                <button type="submit">Search</button>
-            </form>
-
-            <a href="@Url.Action("Profile", "Profile")">
-                <img src="~/images/undraw_Pic_profile_re_7g2h-removebg-preview 1.svg" alt="User Icon" class="user-icon">
-            </a>
-        </nav>
-    </header>
+ 
     <form class="job-form" asp-action="PostJob" asp-controller="PostJob" method="post">
 
         <div class="job-first-row">
