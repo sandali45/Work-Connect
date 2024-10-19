@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Work_Connect.Data;
 using Work_Connect.Models;
@@ -134,6 +135,16 @@ namespace Work_Connect.Controllers
 
             return RedirectToAction("Profile");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            // Perform logout logic, e.g., clear authentication cookies or session
+            HttpContext.SignOutAsync(); // If using cookie authentication
+            return RedirectToAction("Index", "Home"); // Redirect to the home page or login page
+        }
+
     }
     public class ProfileFieldUpdateModel
     {
