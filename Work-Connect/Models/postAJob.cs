@@ -31,6 +31,9 @@ namespace Work_Connect.Models
 
         [StringLength(255)]
         public string? JobType { get; set; } // This could store comma-separated values for multiple job types.
+       
+        [StringLength(255)]
+        public string ImagePath { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now; // Automatically set when the job is created
     }

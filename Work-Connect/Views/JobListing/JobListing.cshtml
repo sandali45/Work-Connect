@@ -31,8 +31,8 @@
                 {
                     <a href="#" class="card-link" onclick="openModal('@job.JobTitle', '@job.CompanyName', '@job.JobId')">
                         <div class="card">
-                            <img src="~/images/job.png" alt="Job Image" class="card-image">
-                            <div class="card-content">
+                    <img src="@Url.Content(job.ImagePath)" alt="Job Image" class="card-image">
+                    <div class="card-content">
                                 <div class="card-title">@job.CompanyName</div>
                                 <div class="card-subtitle">@job.JobTitle</div>
                                 <div class="card-description">@job.JobDescription</div>
