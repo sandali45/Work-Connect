@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Work_Connect.Models.JobApplication>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Navigation</title>
+    <link rel="stylesheet" href="~/css/allappliedcandidates.css">
+    <style>
+        /* Styles for the popup message */
+        .popup-message {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #635BFF;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+            /* Styles for the close button */
+            .popup-message button {
+                background-color: #635BFF; /* Background color */
+                color: #fff; /* Text color */
+                border: none; /* Remove border */
+                padding: 10px 15px; /* Padding */
+                cursor: pointer; /* Cursor style */
+                border-radius: 5px; /* Rounded corners */
+                transition: background-color 0.3s; /* Transition effect */
+            }
+
+                .popup-message button:hover {
+                    background-color: #4e4cbb; /* Darker shade on hover */
+                }
+
+            .popup-message button {
+                margin-top: 10px; /* Margin for spacing */
+            }
+    </style>
+</head>
+<body>
+    @Html.Partial("Navbarhtml")
+    <div class="background-wrapper">
+        <div class="dot"></div>
+        <p class="text-with-dot">Applied Candidates</p>
+    </div>
+
+    <div>
+        <p style="font-weight: bold; font-size: 25px; color: black;
+           text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+           font-family: 'Arial', sans-serif;
+           letter-spacing: 2px;
+           padding: 10px;
+           width: 500px;
+           border: 2px solid #635BFF;">
+            Software Engineer
+        </p>
+    </div>
+
+    <div class="right-box-container">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var job in Model)
+            {
+                <div class="right-box">
+                    <div class="image-container">
+                        <img src="~/images/pfpic.png" alt="Profile Picture" class="profile-img">
+                    </div>
+                    <div class="text-button-container">
+                        <h3>@job.ApplicantName</h3>
+                        <div class="button-container">
+                            <a href="@Url.Action("DownloadResume", "AllAppliedCandidates", new { applicationId = job.ApplicationId })" class="action-button1" download>CV</a>
+                            <button class="action-button11" onclick="openForm()">Schedule an Interview</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No job applications found.</p>
+        }
+    </div>
+
+    <!-- Popup Form for Scheduling -->
+    <div class="chat-popup" id="myForm" style="display:none;">
+        <form id="scheduleInterviewForm" action="@Url.Action("ScheduleInterview", "AllAppliedCandidates")" method="post" class="form-container">
+            <h3>Schedule Interview</h3>
+
+            <label for="companyName">From:</label>
+            <input type="text" id="companyName" name="CompanyName" placeholder="Name of the Company" required>
+
+            <label for="applicantName">To:</label>
+            <input type="text" id="applicantName" name="ApplicantName" placeholder="Name of the Applicant" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="Message" rows="4" required></textarea>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    <!-- Popup Message for Success -->
+    <div class="popup-message" id="successMessage">
+        <p>Interview scheduled successfully!</p>
+        <button onclick="closeSuccessMessage()">Close</button>
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+
+        function closeSuccessMessage() {
+            document.getElementById("successMessage").style.display = "none";
+        }
+
+        document.getElementById("scheduleInterviewForm").onsubmit = async function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById("successMessage").style.display = "block"; // Show success pop-up
+                closeForm(); // Close the form
+            } else {
+                alert("Error: " + result.message); // Show error message
+            }
+        };
+    </script>
+
+
+    <footer>
+        @Html.Partial("footer") <!-- Include footer here -->
+    </footer>
+</body>
+</html>
