@@ -20,7 +20,9 @@ namespace Work_Connect.Data
         public DbSet<VerifiedUsers> VerifiedUsers { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
         public DbSet<InterviewSchedule> InterviewSchedules { get; set; }
-        
+       
+        public DbSet<Usersappliedjob> Usersappliedjob { get; set; }
         public DbSet<Usersjob> Usersjobs { get; set; }
+       
     }
 }
