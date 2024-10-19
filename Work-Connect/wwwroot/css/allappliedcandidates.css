@@ -48,7 +48,7 @@ body, html {
     background-color: transparent;
     border: 2px solid rgba(166, 141, 225, 1);
     border-radius: 25px;
-    width: 80%;
+    width: 50%;
     max-width: 1200px;
     padding: 20px;
 }
@@ -150,7 +150,19 @@ footer {
     margin-top: auto; /* Pushes the footer to the bottom when there’s extra space */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.number-circle {
+    display: inline-block;
+    background-color: #A68DE1;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px; /* This centers the number vertically */
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px; /* Add some space between the text and the circle */
+}
 /* Media Queries */
 @media (max-width: 768px) {
     .right-box {
