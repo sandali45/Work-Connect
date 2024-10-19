@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Work_Connect.Models.Job>
+﻿@model IEnumerable<Work_Connect.Models.postAJob>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Search Results</title>
-    <link rel="stylesheet" href="~/css/searchcss.css" /> 
+    <link rel="stylesheet" href="~/css/searchcss.css" />
 </head>
 <body>
     <div class="container">
@@ -19,31 +19,31 @@
 
         @if (Model.Any())
         {
-        <table>
-            <thead>
-                <tr>
-                    <th>Company Name</th>
-                    <th>Job Title</th>
-                    <th>Skills</th>
-                    <th>Payment Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var job in Model)
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Job Title</th>
+                        <th>Skills</th>
+                        <th>Payment Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Model)
                     {
-                <tr>
-                    <td>@job.CompanyName</td>
-                    <td>@job.JobTitle</td>
-                    <td>@job.Skills</td>
-                    <td>@job.PaymentDetails</td>
-                </tr>
+                        <tr>
+                            <td>@job.CompanyName</td>
+                            <td>@job.JobTitle</td>
+                            <td>@job.JobCategory</td>
+                            <td>@job.MaxSalary</td>
+                        </tr>
                     }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         }
         else
         {
-        <p>No jobs found matching your criteria.</p>
+            <p>No jobs found matching your criteria.</p>
         }
     </div>
     <footer>

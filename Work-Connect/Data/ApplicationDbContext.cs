@@ -10,7 +10,7 @@ namespace Work_Connect.Data
         {
         }
 
-        public DbSet<Job> Jobs { get; set; }
+        
         public DbSet<User> Users { get; set; }
         public DbSet<postAJob> postAJob { get; set; }
         public DbSet<VerifiedCompany> VerifiedCompany { get; set; }
