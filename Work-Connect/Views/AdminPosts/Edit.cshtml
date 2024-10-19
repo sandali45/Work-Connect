@@ -1,0 +1,42 @@
+﻿@model Work_Connect.Models.WaitingJob
+
+<link rel="stylesheet" href="~/css/adminUsers.css">
+
+<h2>Edit Job Details</h2>
+
+<form asp-action="Edit" asp-controller="AdminPosts" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="JobId" value="@Model.JobId" />
+
+    <div>
+        <label>Job Title</label>
+        <input type="text" name="JobTitle" value="@Model.JobTitle" />
+    </div>
+    <div>
+        <label>Company Name</label>
+        <input type="text" name="CompanyName" value="@Model.CompanyName" />
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name="JobDescription">@Model.JobDescription</textarea>
+    </div>
+    <div>
+        <label>Min Salary</label>
+        <input type="text" name="MinSalary" value="@Model.MinSalary" />
+    </div>
+    <div>
+        <label>Max Salary</label>
+        <input type="text" name="MaxSalary" value="@Model.MaxSalary" />
+    </div>
+    <div>
+        <label>Category</label>
+        <input type="text" name="JobCategory" value="@Model.JobCategory" />
+    </div>
+    <div>
+        <label>Type</label>
+        <input type="text" name="JobType" value="@Model.JobType" />
+    </div>
+    <div>
+        <button type="submit" class="save-btn">Save Changes</button>
+    </div>
+</form>

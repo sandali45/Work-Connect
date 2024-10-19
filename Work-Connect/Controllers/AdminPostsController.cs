@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Work_Connect.Data;
 using Work_Connect.Models;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Work_Connect.Controllers
 {
@@ -25,17 +25,14 @@ namespace Work_Connect.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int id)
         {
-            _logger.LogInformation("Approving job with ID: {id}", id);
-
-            // Fetch job from WaitingJob table
             var waitingJob = await _context.WaitingJobs.FindAsync(id);
             if (waitingJob != null)
             {
                 try
                 {
-                    // Create a new job object for the PostAJob table (excluding JobId)
                     var postJob = new postAJob
                     {
                         JobTitle = waitingJob.JobTitle,
@@ -48,17 +45,11 @@ namespace Work_Connect.Controllers
                         CreatedAt = waitingJob.CreatedAt
                     };
 
-                    // Add the job to the PostAJob table
                     _context.postAJob.Add(postJob);
-
-                    // Remove the job from the WaitingJob table
                     _context.WaitingJobs.Remove(waitingJob);
-
-                    // Save changes asynchronously
                     await _context.SaveChangesAsync();
 
                     TempData["Message"] = "Job approved successfully.";
-                    _logger.LogInformation("Job with ID: {id} approved and moved to PostAJob.", id);
                 }
                 catch (Exception ex)
                 {
@@ -69,28 +60,80 @@ namespace Work_Connect.Controllers
             else
             {
                 TempData["Error"] = "Job not found.";
-                _logger.LogWarning("Job with ID: {id} not found.", id);
             }
 
             return RedirectToAction(nameof(adminPosts));
         }
 
-        // Existing Remove method for deletion
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Remove(int id)
         {
             var job = await _context.WaitingJobs.FindAsync(id);
-            if (job != null)
-            {
-                _context.WaitingJobs.Remove(job);
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Job deleted successfully.";
-            }
-            else
+            if (job == null)
             {
                 TempData["Error"] = "Job not found.";
+                return NotFound();
             }
+
+            _context.WaitingJobs.Remove(job);
+            await _context.SaveChangesAsync();
+            TempData["Message"] = "Job deleted successfully.";
+
             return RedirectToAction(nameof(adminPosts));
+        }
+
+        // GET: AdminPosts/Edit/5
+        public async Task<IActionResult> Edit(int id)
+        {
+            var job = await _context.WaitingJobs.FindAsync(id);
+            if (job == null)
+            {
+                return NotFound();
+            }
+            return View(job);
+        }
+
+        // POST: AdminPosts/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("JobId,JobTitle,CompanyName,JobDescription,MinSalary,MaxSalary,JobCategory,JobType")] WaitingJob job)
+        {
+            if (id != job.JobId)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Update the CreatedAt field to the current date and time
+                    job.CreatedAt = DateTime.Now;  // Ensure valid date for CreatedAt
+
+                    _context.Update(job);
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Job details updated successfully.";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!WaitingJobExists(job.JobId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(adminPosts));
+            }
+            return View(job);
+        }
+
+        private bool WaitingJobExists(int id)
+        {
+            return _context.WaitingJobs.Any(e => e.JobId == id);
         }
     }
 }
