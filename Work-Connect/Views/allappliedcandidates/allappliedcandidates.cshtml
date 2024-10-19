@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Work_Connect.Models.JobApplication>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,37 +15,44 @@
     @Html.Partial("Navbarhtml")
     <div class="background-wrapper">
         <div class="dot"></div>
-        <p class="text-with-dot">Applied Candidate</p>
+        <p class="text-with-dot">Applied Candidates</p>
     </div>
-   
-    <div>
 
+    <div>
         <p style="font-weight: bold; font-size: 25px; color: black;
            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
            font-family: 'Arial', sans-serif;
            letter-spacing: 2px;
            padding: 10px;
-            width: 500px;
+           width: 500px;
            border: 2px solid #635BFF;">
             Software Engineer
         </p>
-
     </div>
 
     <div class="right-box-container">
-        <!-- Candidate Box -->
-        <div class="right-box">
-            <div class="image-container">
-                <img src="~/images/pfpic.png" alt="Profile Picture" class="profile-img">
-            </div>
-            <div class="text-button-container">
-                <h3>Sua Johathon</h3>
-                <div class="button-container">
-                    <button class="action-button1">CV</button>
-                    <button class="action-button11" onclick="openForm()">Schedule an Interview</button>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var job in Model)
+            {
+                <div class="right-box">
+                    <div class="image-container">
+                        <img src="~/images/pfpic.png" alt="Profile Picture" class="profile-img">
+                    </div>
+                    <div class="text-button-container">
+                        <h3>@job.ApplicantName</h3>
+                        <div class="button-container">
+                            <a href="@Url.Action("DownloadResume", "AllAppliedCandidates", new { applicationId = job.ApplicationId })" class="action-button1" download>CV</a>
+                            <button class="action-button11" onclick="openForm()">Schedule an Interview</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            }
+        }
+        else
+        {
+            <p>No job applications found.</p>
+        }
     </div>
 
     <!-- Popup Form for Scheduling -->
