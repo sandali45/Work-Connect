@@ -17,22 +17,22 @@ namespace Work_Connect.Controllers
 
         public async Task<IActionResult> allpostedjob()
         {
-            List<postAJob> jobPosts = await _context.postAJob.ToListAsync();
-            return View(jobPosts);
+            List<Usersjob> Usersjob = await _context.Usersjobs.ToListAsync();
+            return View(Usersjob);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             // Find the job by ID
-            var job = await _context.postAJob.FindAsync(id);
+            var job = await _context.Usersjobs.FindAsync(id);
             if (job == null)
             {
                 return NotFound(); // Return 404 if not found
             }
 
             // Remove the job from the context
-            _context.postAJob.Remove(job);
+            _context.Usersjobs.Remove(job);
             await _context.SaveChangesAsync(); // Save changes to the database
 
             return RedirectToAction(nameof(allpostedjob)); // Redirect back to the list
