@@ -15,6 +15,7 @@
 
 <body>
     @Html.Partial("Navbarhtml")
+
     <!-- Profile Section -->
     <div class="profile-header">
         <div class="cover-photo">
@@ -39,202 +40,111 @@
         <div class="header-content">
             <div class="profile-info">
                 <br><br><br><br>
-                <p>@ViewBag.UserName</p> <!-- Display the user's name here -->
-                <p id="occupation" onclick="editField('occupation')">@ViewBag.Occupation</p>
-                <p id="address" onclick="editField('address')">@ViewBag.Address</p>
-                <p>@ViewBag.Email</p>
+                <!-- Display placeholders for missing values -->
+                <p>@(!string.IsNullOrEmpty(ViewBag.Name) ? ViewBag.Name : "Add Name")</p>
+                <p>@(!string.IsNullOrEmpty(ViewBag.Occupation) ? ViewBag.Occupation : "Add Occupation")</p>
+                <p>@(!string.IsNullOrEmpty(ViewBag.Address) ? ViewBag.Address : "Add Address")</p>
+                <p>@(!string.IsNullOrEmpty(ViewBag.Email) ? ViewBag.Email : "Add Email")</p>
             </div>
         </div>
     </div>
 
     <!-- About Section -->
     <div class="about-section">
-        <div id="description-container" class="editable" onclick="editDescription()">
-            <p id="description">Small description about self</p>
-            <input type="text" id="description-input" style="display: none;" />
-            <button id="save-description" type="button" style="display: none;" onclick="saveDescription()">Save</button>
+        <h2 style="color: white; padding: 10px;">Description</h2>
+        <div id="description-container">
+            <form action="@Url.Action("UpdateDescription", "Profile")" method="post">
+                <input type="text" id="description-input" name="description"
+                       value="@(!string.IsNullOrEmpty(ViewBag.Description) ? ViewBag.Description : "Small description about self")" />
+                <button type="submit" class="save-button">Save</button>
+            </form>
         </div>
     </div>
 
     <!-- Experience Section -->
     <div class="section experience-section">
         <h2>Experience</h2>
-        <div id="experience-container" class="editable" onclick="editExperience()">
-            <p id="experience-text">Add your experience</p>
-            <textarea id="experience-input" style="display: none;"></textarea>
-            <button id="save-experience" type="button" style="display: none;" onclick="saveExperience()">Save</button>
+        <div id="experience-container">
+            <form action="@Url.Action("UpdateExperience", "Profile")" method="post">
+                <!-- Input field for experience -->
+                <input type="text" id="experience-input" name="experience" value="@(!string.IsNullOrEmpty(ViewBag.Experience) ? ViewBag.Experience : "Add your experience")" />
+                <!-- Button to save the new experience -->
+                <button type="submit" class="save-button">Save</button>
+            </form>
         </div>
     </div>
 
     <!-- Education Section -->
     <div class="section education-section">
         <h2>Education</h2>
-        <div id="education-container" class="editable" onclick="editEducation()">
-            <p id="education-text">Add your education</p>
-            <textarea id="education-input" style="display: none;"></textarea>
-            <button id="save-education" type="button" style="display: none;" onclick="saveEducation()">Save</button>
+        <div id="education-container">
+            <form action="@Url.Action("UpdateEducation", "Profile")" method="post">
+                <!-- Input field for education -->
+                <input type="text" id="education-input" name="education" value="@(!string.IsNullOrEmpty(ViewBag.Education) ? ViewBag.Education : "Add your education")" />
+                <!-- Button to save the new education -->
+                <button type="submit" class="save-button">Save</button>
+            </form>
         </div>
     </div>
 
     <!-- Skills Section -->
     <div class="section skills-section">
         <h2>Skills</h2>
-        <div id="skills-container" class="editable" onclick="editSkills()">
-            <p id="skills-text">Add your skills</p>
-            <textarea id="skills-input" style="display: none;"></textarea>
-            <button id="save-skills" type="button" style="display: none;" onclick="saveSkills()">Save</button>
+        <div id="skills-container">
+            <form action="@Url.Action("UpdateSkills", "Profile")" method="post">
+                <!-- Input field for skills -->
+                <input type="text" id="skills-input" name="skills" value="@(!string.IsNullOrEmpty(ViewBag.Skills) ? ViewBag.Skills : "Add your skills")" />
+                <!-- Button to save the new skills -->
+                <button type="submit" class="save-button">Save</button>
+            </form>
         </div>
     </div>
 
+
     <script>
-        function editField(field) {
-            var fieldElement = document.getElementById(field);
-            var inputField = document.createElement("input");
-            inputField.type = "text";
-            inputField.value = fieldElement.innerText === "Add " + field.charAt(0).toUpperCase() + field.slice(1) ? "" : fieldElement.innerText;
-            inputField.onblur = function () { saveField(field, inputField.value); };
-            fieldElement.innerHTML = "";
-            fieldElement.appendChild(inputField);
-            inputField.focus();
+        function editField(fieldId) {
+            const element = document.getElementById(fieldId);
+            const currentValue = element.innerText;
+
+            // Replace the current value with an input field
+            element.innerHTML = `
+                                <input type="text" id="${fieldId}-input" value="${currentValue}" onblur="saveField('${fieldId}')">
+                            `;
+
+            // Focus on the input field
+            document.getElementById(`${fieldId}-input`).focus();
         }
 
-        function saveField(field, value) {
-            var fieldElement = document.getElementById(field);
-            if (value.trim()) {
-                fieldElement.innerText = value;
-            } else {
-                fieldElement.innerText = "Add " + field.charAt(0).toUpperCase() + field.slice(1);
-            }
-        }
+        function saveField(fieldId) {
+            const inputField = document.getElementById(`${fieldId}-input`);
+            const newValue = inputField.value;
 
-        function editDescription() {
-            var descriptionText = document.getElementById("description").innerText;
-            var inputField = document.getElementById("description-input");
-
-            inputField.style.display = "block";
-            inputField.value = descriptionText;
-            inputField.focus();
-            document.getElementById("description").style.display = "none";
-            document.getElementById("save-description").style.display = "inline-block";
-        }
-
-        function saveDescription() {
-            var inputField = document.getElementById("description-input");
-            var newDescription = inputField.value.trim();
-
-            if (newDescription) {
-                // Update the description on the UI
-                document.getElementById("description").innerText = newDescription;
-
-                // Send the updated description to the server
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "/Profile/UpdateProfileField", true);
-                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        console.log("Description updated successfully");
-                    } else if (xhr.readyState === 4) {
-                        console.error("Error updating description");
+            // Send AJAX request to save the updated field
+            fetch('/Profile/UpdateProfileField', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({
+                    field: fieldId,
+                    value: newValue,
+                }),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Update the UI with the new value
+                        document.getElementById(fieldId).innerText = newValue;
+                    } else {
+                        alert("Failed to update field.");
                     }
-                };
-
-                // Send the field update request to the backend
-                xhr.send(JSON.stringify({ field: "Description", value: newDescription }));
-            }
-
-            // Hide the input field and show the description text
-            document.getElementById("description").style.display = "block";
-            inputField.style.display = "none";
-            document.getElementById("save-description").style.display = "none";
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred while updating the field.");
+                });
         }
 
-        function editExperience() {
-            var text = document.getElementById("experience-text").innerText;
-            var input = document.getElementById("experience-input");
-
-            input.style.display = "block";
-            input.value = text;
-            input.focus();
-            document.getElementById("experience-text").style.display = "none";
-            document.getElementById("save-experience").style.display = "inline-block";
-        }
-
-        function saveExperience() {
-            var input = document.getElementById("experience-input");
-            var newText = input.value.trim();
-
-            if (newText) {
-                document.getElementById("experience-text").innerText = newText;
-                updateProfileField('Experience', newText);
-            }
-
-            document.getElementById("experience-text").style.display = "block";
-            input.style.display = "none";
-            document.getElementById("save-experience").style.display = "none";
-        }
-
-        function editEducation() {
-            var text = document.getElementById("education-text").innerText;
-            var input = document.getElementById("education-input");
-
-            input.style.display = "block";
-            input.value = text;
-            input.focus();
-            document.getElementById("education-text").style.display = "none";
-            document.getElementById("save-education").style.display = "inline-block";
-        }
-
-        function saveEducation() {
-            var input = document.getElementById("education-input");
-            var newText = input.value.trim();
-
-            if (newText) {
-                document.getElementById("education-text").innerText = newText;
-                updateProfileField('Education', newText);
-            }
-
-            document.getElementById("education-text").style.display = "block";
-            input.style.display = "none";
-            document.getElementById("save-education").style.display = "none";
-        }
-
-        function editSkills() {
-            var text = document.getElementById("skills-text").innerText;
-            var input = document.getElementById("skills-input");
-
-            input.style.display = "block";
-            input.value = text;
-            input.focus();
-            document.getElementById("skills-text").style.display = "none";
-            document.getElementById("save-skills").style.display = "inline-block";
-        }
-
-        function saveSkills() {
-            var input = document.getElementById("skills-input");
-            var newText = input.value.trim();
-
-            if (newText) {
-                document.getElementById("skills-text").innerText = newText;
-                updateProfileField('Skills', newText);
-            }
-
-            document.getElementById("skills-text").style.display = "block";
-            input.style.display = "none";
-            document.getElementById("save-skills").style.display = "none";
-        }
-
-        function updateProfileField(field, value) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/Profile/UpdateProfileField", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log("Field updated successfully");
-                }
-            };
-            xhr.send(JSON.stringify({ field: field, value: value }));
-        }
     </script>
     <footer>
         @Html.Partial("footer")

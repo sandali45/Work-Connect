@@ -58,7 +58,7 @@ namespace Work_Connect.Controllers
             Response.Cookies.Append("UserId", user.Id.ToString(), option); // Store the user's Id
 
             // Redirect to the profile page after successful sign-in
-            return RedirectToAction("Profile", "Profile");
+            return RedirectToAction("home", "Home");
         }
     }
 }

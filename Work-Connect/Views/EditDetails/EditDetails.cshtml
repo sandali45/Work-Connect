@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "EditDetails";
-}
+﻿@model Work_Connect.Models.User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,39 +18,40 @@
         </div>
 
         <h2>Edit Details</h2>
-        <form asp-action="EditDetailshtml" asp-controller="EditDetailsController" method="post">
+        <form action="@Url.Action("EditDetailsHtml", "EditDetails", new { Id = ViewBag.Id })" method="post">
+            <input type="hidden" name="Id" value="@ViewBag.Id" />
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
                     <label for="name">Name</label>
                 </div>
-                <input type="text" id="name" name="name" value="@ViewBag.UserName">
+                <input type="text" id="name" name="Name" value="@ViewBag.Name"/>
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
                     <label for="email">Email</label>
                 </div>
-                <input type="email" id="email" name="email" value="@ViewBag.Email">
+                <input type="email" id="email" name="Email" value="@ViewBag.Email"/>
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
                     <label for="address">Address</label>
                 </div>
-                <input type="text" id="address" name="address" value="@ViewBag.Address">
+                <input type="text" id="address" name="Address" value="@ViewBag.Address"/>
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
-                    <label for="job-title">Occupation</label>
+                    <label for="occupation">Occupation</label>
                 </div>
-                <input type="text" id="job-title" name="occupation" value="@ViewBag.Occupation">
+                <input type="text" id="occupation" name="Occupation" value="@ViewBag.Occupation"/>
             </div>
             <div class="input-group">
                 <div class="label-wrapper">
                     <span class="circle"></span>
-                    <a href="@Url.Action("ChangePassword", "ChangePassword")" class="change-password-link">Change Password?</a>
+                      <a href="@Url.Action("ChangePassword", "ChangePassword")" class="change-password-link">Change Password?</a>
                 </div>
             </div>
             <button type="submit" class="save-button">Save</button>
