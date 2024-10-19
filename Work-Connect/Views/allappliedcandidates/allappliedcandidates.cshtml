@@ -15,10 +15,18 @@
         <div class="dot"></div>
         <p class="text-with-dot">Applied Candidate</p>
     </div>
-    <hr />
+   
     <div>
 
-        <p style="font-weight: bold; font-size: 18px; color:black;">Software Engineer</p>
+        <p style="font-weight: bold; font-size: 25px; color: black;
+           text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+           font-family: 'Arial', sans-serif;
+           letter-spacing: 2px;
+           padding: 10px;
+            width: 500px;
+           border: 2px solid #635BFF;">
+            Software Engineer
+        </p>
 
     </div>
 
@@ -62,5 +70,9 @@
             document.getElementById("myForm").style.display = "none";
         }
     </script>
+
+    <footer>
+        @Html.Partial("footer") <!-- Include footer here -->
+    </footer>
 </body>
 </html>

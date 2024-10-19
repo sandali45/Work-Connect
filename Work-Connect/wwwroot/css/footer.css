@@ -1,0 +1,66 @@
+﻿/* CSS to ensure footer stays at the bottom */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.background-wrapper {
+    flex-grow: 1; /* Makes sure this section grows and pushes the footer down */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+    .footer-nav li {
+        margin: 10px 20px;
+    }
+
+    .footer-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+        .footer-nav a:hover {
+            color: #a8a8a8;
+        }
+
+.footer-image img {
+    max-width: 150px;
+    height: auto;
+    margin-top: 20px;
+}
