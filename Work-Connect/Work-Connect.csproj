@@ -33,10 +33,4 @@
     </PackageReference>
   </ItemGroup>
 
-  
-
-  <ItemGroup>
-    <Folder Include="Views\AdminUsers\" />
-  </ItemGroup>
-
 </Project>
