@@ -100,6 +100,16 @@
         </div>
     </div>
 
+    <!-- Logout Section -->
+    <div class="section logout-section">
+        <h2>Logout</h2>
+        <form action="@Url.Action("Logout", "Profile")" method="post" id="logout-form">
+            @Html.AntiForgeryToken() <!-- Add CSRF token for security -->
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+
+
 
     <script>
         function editField(fieldId) {
