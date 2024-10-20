@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    @Html.Partial("Navbarhtml")
     <div class="approval-page-container">
         <div class="approval-content">
             <img src="/images/ApprovalCheckCircle.svg" alt="Job Submitted" class="approval-icon">
@@ -31,6 +32,9 @@
             <a href="@Url.Action("index", "Home")" class="return-home-btn">Return to Home</a>
         </div>
     </div>
+    <footer>
+        @Html.Partial("footer")
+    </footer>
 </body>
 
 </html>
